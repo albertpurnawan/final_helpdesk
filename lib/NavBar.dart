@@ -1,5 +1,6 @@
 // ignore: file_names
 // ignore: file_names
+// ignore: file_names
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_returning_null_for_void
 
 import 'package:flutter/material.dart';
@@ -32,8 +33,11 @@ class NavBar extends StatelessWidget {
                     fit: BoxFit.fill,
                     image: AssetImage('assets/images/background.jpg'))),
           ),
-          Text("Menu",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Text("Menu",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ),
           ListTile(
             leading: Icon(Icons.message),
             title: Text('Chat'),
