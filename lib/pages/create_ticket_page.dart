@@ -1,12 +1,22 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, avoid_print
 
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
 import 'package:lottie/lottie.dart';
 
-class CreateTicket extends StatelessWidget {
+class CreateTicket extends StatefulWidget {
   const CreateTicket({super.key});
+
+  @override
+  State<CreateTicket> createState() => _CreateTicketState();
+}
+
+class _CreateTicketState extends State<CreateTicket> {
+  String _fileText = "";
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +128,9 @@ class CreateTicket extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              selectMultipleFile();
+                            },
                             icon: Icon(
                               Icons.add,
                               color: Colors.green[600],
@@ -175,7 +187,7 @@ class CreateTicket extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              // file attachment
+              // file attachment card
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
@@ -184,9 +196,19 @@ class CreateTicket extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: Column(
                     children: [
+                      Text(_fileText),
                       Container(
                         width: 100,
                         child: Lottie.asset("assets/lottie/sleep.json"),
@@ -209,5 +231,21 @@ class CreateTicket extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void selectMultipleFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      // allowedExtensions: ['jpg', 'pdf', 'doc'],
+      allowMultiple: true,
+    );
+
+    if (result != null) {
+      List<File> files = result.paths.map((path) => File(path!)).toList();
+      setState(() {
+        _fileText = files.toString();
+      });
+    } else {
+      // user canceled the picker
+    }
   }
 }
