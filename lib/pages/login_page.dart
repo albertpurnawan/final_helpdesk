@@ -25,47 +25,67 @@ class LoginPage extends StatelessWidget {
                 height: 80,
               ),
               TextFormField(
-                style: GoogleFonts.openSans(color: Colors.black),
+                style: GoogleFonts.inter(color: Colors.black),
                 decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.person,
-                      color: Colors.red,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide:
-                            const BorderSide(color: Colors.red, width: 1.0)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide:
-                            const BorderSide(color: Colors.red, width: 1.0)),
-                    hintText: 'Username',
-                    hintStyle: GoogleFonts.openSans(
-                        color: const Color.fromARGB(255, 16, 16, 16),
-                        fontSize: 14)),
+                  prefixIcon: const Icon(
+                    Icons.person,
+                    color: Colors.red,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                  ),
+                  hintText: 'Username',
+                  hintStyle:
+                      GoogleFonts.inter(color: Colors.black, fontSize: 14),
+                ),
               ),
+              // TextField(
+              //   style: GoogleFonts.inter(color: Colors.black),
+              //   autocorrect: false,
+              //   decoration: InputDecoration(
+              //     prefixIcon: const Icon(
+              //       Icons.person,
+              //       color: Colors.red,
+              //     ),
+              //     labelText: "Username",
+              //     enabledBorder: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(10),
+              //       borderSide: const BorderSide(color: Colors.red, width: 1.0),
+              //     ),
+              //     focusedBorder: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(10),
+              //       borderSide: const BorderSide(color: Colors.red, width: 1.0),
+              //     ),
+              //   ),
+              // ),
+
               const SizedBox(
                 height: 20,
               ),
               TextFormField(
                 obscureText: true,
-                style: GoogleFonts.openSans(color: Colors.black),
+                style: GoogleFonts.inter(color: Colors.black),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(
                     Icons.lock,
                     color: Colors.red,
                   ),
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          const BorderSide(color: Colors.red, width: 1.0)),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide:
-                          const BorderSide(color: Colors.red, width: 1.0)),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                  ),
                   hintText: 'Password',
-                  hintStyle: GoogleFonts.openSans(
-                      color: const Color(0xff6F7075), fontSize: 14),
+                  hintStyle:
+                      GoogleFonts.inter(color: Colors.black, fontSize: 14),
                 ),
               ),
               const SizedBox(
@@ -77,20 +97,23 @@ class LoginPage extends StatelessWidget {
                   width: 295,
                   height: 55,
                   child: TextButton(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {
-                        Get.toNamed(RouteClass.getCreateTicketRoute());
-                      },
-                      child: Text(
-                        "SIGN IN",
-                        style: GoogleFonts.openSans(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      )),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      Get.toNamed(RouteClass.getCreateTicketRoute());
+                    },
+                    child: Text(
+                      "SIGN IN",
+                      style: GoogleFonts.openSans(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(

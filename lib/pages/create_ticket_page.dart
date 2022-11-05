@@ -1,6 +1,9 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
+import 'package:lottie/lottie.dart';
 
 class CreateTicket extends StatelessWidget {
   const CreateTicket({super.key});
@@ -64,6 +67,15 @@ class CreateTicket extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +93,6 @@ class CreateTicket extends StatelessWidget {
                         '* Please fill all required inputs',
                         style: GoogleFonts.inter(
                           fontSize: 14,
-                          // fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                       ),
@@ -168,7 +179,6 @@ class CreateTicket extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
-                  // width: 300,
                   padding: const EdgeInsets.all(20),
                   width: 400,
                   decoration: BoxDecoration(
@@ -176,11 +186,10 @@ class CreateTicket extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        "assets/images/avatar.png",
+                      Container(
                         width: 100,
+                        child: Lottie.asset("assets/lottie/sleep.json"),
                       ),
                       Text(
                         "No files attached",

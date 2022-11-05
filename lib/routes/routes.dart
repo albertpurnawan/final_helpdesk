@@ -16,9 +16,10 @@ class RouteClass {
   static List<GetPage> routes = [
     GetPage(name: login, page: () => const LoginPage()),
     GetPage(
-        name: createTicket,
-        page: () => const CreateTicket(),
-        transition: Transition.fade,
-        transitionDuration: const Duration(seconds: 1))
+      name: createTicket,
+      page: () => const CreateTicket(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(seconds: 1),
+    )
   ];
 }
