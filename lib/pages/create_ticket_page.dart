@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/util/drawer.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,52 +23,56 @@ class _CreateTicketState extends State<CreateTicket> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green[50],
-      body: SafeArea(
-        child: SingleChildScrollView(
-          // child: SafeArea(
+      drawer: const MyDrawer(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70.0),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50,
+                    padding: const EdgeInsets.all(10),
+                    child: Center(
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Help Desk Mobile",
+                    style: GoogleFonts.inter(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
+              ),
+              Container(
+                padding: const EdgeInsets.all(7),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(Icons.person, color: Colors.green[200]),
+              )
+            ],
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        // child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Nav Bar
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 60,
-                          padding: const EdgeInsets.all(10),
-                          // decoration: BoxDecoration(color: Colors.grey[500]),
-                          child: Center(
-                            child: Image.asset(
-                              "assets/images/logo.png",
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text("Help Desk Mobile",
-                            style: GoogleFonts.inter(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black)),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(7),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(Icons.person, color: Colors.green[200]),
-                    )
-                  ],
-                ),
-              ),
-
               // Create Ticket Card
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -227,8 +232,8 @@ class _CreateTicketState extends State<CreateTicket> {
               const SizedBox(height: 20),
             ],
           ),
-          // ),
         ),
+        // ),
       ),
     );
   }

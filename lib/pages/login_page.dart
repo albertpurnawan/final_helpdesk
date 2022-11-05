@@ -44,26 +44,6 @@ class LoginPage extends StatelessWidget {
                       GoogleFonts.inter(color: Colors.black, fontSize: 14),
                 ),
               ),
-              // TextField(
-              //   style: GoogleFonts.inter(color: Colors.black),
-              //   autocorrect: false,
-              //   decoration: InputDecoration(
-              //     prefixIcon: const Icon(
-              //       Icons.person,
-              //       color: Colors.red,
-              //     ),
-              //     labelText: "Username",
-              //     enabledBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(10),
-              //       borderSide: const BorderSide(color: Colors.red, width: 1.0),
-              //     ),
-              //     focusedBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(10),
-              //       borderSide: const BorderSide(color: Colors.red, width: 1.0),
-              //     ),
-              //   ),
-              // ),
-
               const SizedBox(
                 height: 20,
               ),
