@@ -32,7 +32,22 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
         height: double.infinity,
         // color: Colors.red,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              "Manage Master Category",
+              style: GoogleFonts.inter(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green[900]),
+            ),
+            Divider(
+              color: Colors.green.shade900,
+              thickness: 1,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             SizedBox(
               height: 60,
               width: double.infinity,
@@ -87,7 +102,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
               margin: const EdgeInsets.only(top: 20),
               width: double.infinity,
               height: 500,
-              // color: Colors.amber,
+              color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
