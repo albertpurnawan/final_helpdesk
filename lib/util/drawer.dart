@@ -17,12 +17,25 @@ class _MyDrawerState extends State<MyDrawer> {
       child: ListView(
         children: [
           buildDrawerHeader(),
+          //DASHBOARD
+          const SizedBox(height: 16),
+          buildDrawerItem(
+            icon: Icons.dashboard,
+            text: "Dashboard",
+            onTap: () => navigate(0),
+            tileColor: Get.currentRoute == RouteClass.getDashboardRoute()
+                ? Colors.green[50]
+                : null,
+            textIconColor: Get.currentRoute == RouteClass.getDashboardRoute()
+                ? Colors.green
+                : Colors.black,
+          ),
           //CREATE TICKET
           const SizedBox(height: 16),
           buildDrawerItem(
             icon: Icons.info,
             text: "Create Ticket",
-            onTap: () => navigate(0),
+            onTap: () => navigate(1),
             tileColor: Get.currentRoute == RouteClass.getCreateTicketRoute()
                 ? Colors.green[50]
                 : null,
@@ -30,12 +43,52 @@ class _MyDrawerState extends State<MyDrawer> {
                 ? Colors.green
                 : Colors.black,
           ),
+          //TICKET POOL
+          const SizedBox(height: 16),
+          buildDrawerItem(
+            icon: Icons.list,
+            text: "Ticket Pool",
+            onTap: () => navigate(2),
+            tileColor: Get.currentRoute == RouteClass.getTicketPoolRoute()
+                ? Colors.green[50]
+                : null,
+            textIconColor: Get.currentRoute == RouteClass.getTicketPoolRoute()
+                ? Colors.green
+                : Colors.black,
+          ),
+          //JOBLIST
+          const SizedBox(height: 16),
+          buildDrawerItem(
+            icon: Icons.cases_rounded,
+            text: "My Joblist",
+            onTap: () => navigate(3),
+            tileColor: Get.currentRoute == RouteClass.getJoblistRoute()
+                ? Colors.green[50]
+                : null,
+            textIconColor: Get.currentRoute == RouteClass.getJoblistRoute()
+                ? Colors.green
+                : Colors.black,
+          ),
+          //MANAGE MASTER CATEGORY
+          const SizedBox(height: 16),
+          buildDrawerItem(
+            icon: Icons.settings,
+            text: "Manage Master Category",
+            onTap: () => navigate(4),
+            tileColor: Get.currentRoute == RouteClass.getMasterCategoryRoute()
+                ? Colors.green[50]
+                : null,
+            textIconColor:
+                Get.currentRoute == RouteClass.getMasterCategoryRoute()
+                    ? Colors.green
+                    : Colors.black,
+          ),
           //REPORT HELPDESK
           const SizedBox(height: 16),
           buildDrawerItem(
             icon: Icons.bar_chart,
             text: "Report Helpdesk",
-            onTap: () => navigate(1),
+            onTap: () => navigate(5),
             tileColor: Get.currentRoute == RouteClass.getReportRoute()
                 ? Colors.green[50]
                 : null,
@@ -48,7 +101,7 @@ class _MyDrawerState extends State<MyDrawer> {
           buildDrawerItem(
             icon: Icons.search,
             text: "Browse",
-            onTap: () => navigate(2),
+            onTap: () => navigate(6),
             tileColor: Get.currentRoute == RouteClass.getBrowseRoute()
                 ? Colors.green[50]
                 : null,
@@ -56,53 +109,6 @@ class _MyDrawerState extends State<MyDrawer> {
                 ? Colors.green
                 : Colors.black,
           ),
-          // CREATE TICKET
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.info,
-          //     size: 26,
-          //   ),
-          //   title: Text(
-          //     'Create Ticket',
-          //     style: GoogleFonts.inter(
-          //       color: Colors.black,
-          //       fontSize: 16,
-          //     ),
-          //   ),
-          //   onTap: () {
-          //     Get.toNamed(RouteClass.getCreateTicketRoute());
-          //   },
-          // ),
-          // REPORT HELPDESK
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.bar_chart,
-          //     size: 26,
-          //   ),
-          //   title: Text(
-          //     'Report Helpdesk',
-          //     style: GoogleFonts.inter(
-          //       color: Colors.black,
-          //       fontSize: 16,
-          //     ),
-          //   ),
-          //   onTap: () {},
-          // ),
-          // BROWSE
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.search,
-          //     size: 26,
-          //   ),
-          //   title: Text(
-          //     'Browse',
-          //     style: GoogleFonts.inter(
-          //       color: Colors.black,
-          //       fontSize: 16,
-          //     ),
-          //   ),
-          //   onTap: () {},
-          // ),
         ],
       ),
     );
@@ -146,14 +152,27 @@ class _MyDrawerState extends State<MyDrawer> {
   }
 
   navigate(int index) {
+    // Navigator.pop(context);
     switch (index) {
       case 0:
-        Get.toNamed(RouteClass.getCreateTicketRoute());
+        Get.toNamed(RouteClass.getDashboardRoute());
         break;
       case 1:
-        Get.toNamed(RouteClass.getReportRoute());
+        Get.toNamed(RouteClass.getCreateTicketRoute());
         break;
       case 2:
+        Get.toNamed(RouteClass.getTicketPoolRoute());
+        break;
+      case 3:
+        Get.toNamed(RouteClass.getJoblistRoute());
+        break;
+      case 4:
+        Get.toNamed(RouteClass.getMasterCategoryRoute());
+        break;
+      case 5:
+        Get.toNamed(RouteClass.getReportRoute());
+        break;
+      case 6:
         Get.toNamed(RouteClass.getBrowseRoute());
         break;
     }
