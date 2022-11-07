@@ -14,6 +14,7 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.green[50],
       child: ListView(
         children: [
           buildDrawerHeader(),
@@ -24,10 +25,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Dashboard",
             onTap: () => navigate(0),
             tileColor: Get.currentRoute == RouteClass.getDashboardRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getDashboardRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
           //CREATE TICKET
@@ -37,10 +38,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Create Ticket",
             onTap: () => navigate(1),
             tileColor: Get.currentRoute == RouteClass.getCreateTicketRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getCreateTicketRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
           //TICKET POOL
@@ -50,10 +51,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Ticket Pool",
             onTap: () => navigate(2),
             tileColor: Get.currentRoute == RouteClass.getTicketPoolRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getTicketPoolRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
           //JOBLIST
@@ -63,10 +64,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "My Joblist",
             onTap: () => navigate(3),
             tileColor: Get.currentRoute == RouteClass.getJoblistRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getJoblistRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
           //MANAGE MASTER CATEGORY
@@ -76,11 +77,11 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Manage Master Category",
             onTap: () => navigate(4),
             tileColor: Get.currentRoute == RouteClass.getMasterCategoryRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor:
                 Get.currentRoute == RouteClass.getMasterCategoryRoute()
-                    ? Colors.green
+                    ? Colors.green.shade800
                     : Colors.black,
           ),
           //REPORT HELPDESK
@@ -90,10 +91,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Report Helpdesk",
             onTap: () => navigate(5),
             tileColor: Get.currentRoute == RouteClass.getReportRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getReportRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
           //BROWSE
@@ -103,10 +104,10 @@ class _MyDrawerState extends State<MyDrawer> {
             text: "Browse",
             onTap: () => navigate(6),
             tileColor: Get.currentRoute == RouteClass.getBrowseRoute()
-                ? Colors.green[50]
+                ? Colors.green[100]
                 : null,
             textIconColor: Get.currentRoute == RouteClass.getBrowseRoute()
-                ? Colors.green
+                ? Colors.green.shade800
                 : Colors.black,
           ),
         ],
