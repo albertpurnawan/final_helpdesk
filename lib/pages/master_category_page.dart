@@ -49,7 +49,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
               height: 10,
             ),
             SizedBox(
-              height: 60,
+              height: 70,
               width: double.infinity,
               child: ListView.builder(
                 itemCount: tabItems.length,
@@ -65,7 +65,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
                       margin: const EdgeInsets.all(5),
-                      width: 120,
+                      width: 140,
                       // height: 50,
                       decoration: BoxDecoration(
                         color:

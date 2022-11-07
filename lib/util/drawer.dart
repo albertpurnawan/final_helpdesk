@@ -126,7 +126,7 @@ class _MyDrawerState extends State<MyDrawer> {
               child: Image.asset("assets/images/logo.png"),
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           Text(
             "Help Desk Mobile",
             style: GoogleFonts.inter(
