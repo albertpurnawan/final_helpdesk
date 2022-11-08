@@ -16,48 +16,63 @@ class _BrowsePageState extends State<BrowsePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(),
+      backgroundColor: Colors.green.shade50,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Browse List Issue",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[900]),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SizedBox(
-                  width: 200,
-                  height: 30,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(),
-                      hintText: "Search...",
-                      contentPadding: EdgeInsets.all(5),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                PaginatedDataTable(
-                  columns: _createColumns(),
-                  source: _dataIssue,
-                  columnSpacing: 40,
-                  horizontalMargin: 20,
-                  rowsPerPage: 6,
-                  arrowHeadColor: Colors.green,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Browse List Issue",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green[900]),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizedBox(
+                    width: 200,
+                    height: 30,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(),
+                        hintText: "Search...",
+                        contentPadding: EdgeInsets.all(5),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  PaginatedDataTable(
+                    columns: _createColumns(),
+                    source: _dataIssue,
+                    columnSpacing: 40,
+                    horizontalMargin: 20,
+                    rowsPerPage: 5,
+                    arrowHeadColor: Colors.green,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
