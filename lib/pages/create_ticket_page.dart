@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/drawer.dart';
+import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
 import 'package:lottie/lottie.dart';
 
@@ -24,7 +24,7 @@ class _CreateTicketState extends State<CreateTicket> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green[50],
-      drawer: const MyDrawer(),
+      // drawer: const MyDrawer(),
       appBar: const MyAppBar(),
       body: SingleChildScrollView(
         // child: SafeArea(
@@ -195,6 +195,7 @@ class _CreateTicketState extends State<CreateTicket> {
         ),
         // ),
       ),
+      bottomNavigationBar: const BottomNavbar(),
     );
   }
 

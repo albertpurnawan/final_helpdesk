@@ -16,11 +16,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               Container(
                 height: 50,
                 padding: const EdgeInsets.all(10),
-                child: Center(
-                  child: Image.asset(
-                    "assets/images/logo.png",
-                  ),
+                child: Icon(
+                  Icons.dashboard_outlined,
+                  color: Colors.green[900],
                 ),
+                // child: Center(
+                //   child: Image.asset(
+                //     "assets/images/logo.png",
+                //   ),
+                // ),
               ),
               const SizedBox(
                 width: 10,
@@ -30,18 +34,18 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 style: GoogleFonts.inter(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                    color: Colors.green[900]),
               ),
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(7),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(Icons.person, color: Colors.green[200]),
-          )
+          // Container(
+          //   padding: const EdgeInsets.all(7),
+          //   decoration: const BoxDecoration(
+          //     color: Colors.white,
+          //     shape: BoxShape.circle,
+          //   ),
+          //   child: Icon(Icons.person, color: Colors.green[200]),
+          // )
         ],
       ),
     );
