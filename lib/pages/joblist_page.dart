@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_skripsi/util/drawer.dart';
+import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class JoblistPage extends StatelessWidget {
   const JoblistPage({super.key});
@@ -8,11 +8,12 @@ class JoblistPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Joblist"),
+        title: const Text("Joblist Page"),
         centerTitle: true,
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.red,
       ),
-      drawer: const MyDrawer(),
+      bottomNavigationBar: const BottomNavbar(),
+      // drawer: const MyDrawer(),
     );
   }
 }

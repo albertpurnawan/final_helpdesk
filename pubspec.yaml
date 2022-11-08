@@ -36,7 +36,9 @@ dependencies:
   google_fonts: ^3.0.1
   get: 
   lottie: ^1.4.3
-  file_picker: ^5.2.2
+  file_picker: ^5.2.2 
+  curved_navigation_bar: ^1.0.3 
+
 
 
 

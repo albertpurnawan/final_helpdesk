@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_skripsi/util/drawer.dart';
+import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class TicketPoolPage extends StatelessWidget {
   const TicketPoolPage({super.key});
@@ -12,7 +12,8 @@ class TicketPoolPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.amber,
       ),
-      drawer: const MyDrawer(),
+      bottomNavigationBar: const BottomNavbar(),
+      // drawer: const MyDrawer(),
     );
   }
 }

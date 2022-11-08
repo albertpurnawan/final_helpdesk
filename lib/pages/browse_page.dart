@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_skripsi/util/drawer.dart';
+import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class BrowsePage extends StatelessWidget {
   const BrowsePage({super.key});
@@ -12,7 +12,8 @@ class BrowsePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-      drawer: const MyDrawer(),
+      bottomNavigationBar: const BottomNavbar(),
+      // drawer: const MyDrawer(),
     );
   }
 }

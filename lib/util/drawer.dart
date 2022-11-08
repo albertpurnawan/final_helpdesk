@@ -61,12 +61,12 @@ class _MyDrawerState extends State<MyDrawer> {
           const SizedBox(height: 16),
           buildDrawerItem(
             icon: Icons.cases_rounded,
-            text: "My Joblist",
+            text: "Home",
             onTap: () => navigate(3),
-            tileColor: Get.currentRoute == RouteClass.getJoblistRoute()
+            tileColor: Get.currentRoute == RouteClass.getHomeRoute()
                 ? Colors.green[100]
                 : null,
-            textIconColor: Get.currentRoute == RouteClass.getJoblistRoute()
+            textIconColor: Get.currentRoute == RouteClass.getHomeRoute()
                 ? Colors.green.shade800
                 : Colors.black,
           ),
@@ -165,7 +165,7 @@ class _MyDrawerState extends State<MyDrawer> {
         Get.toNamed(RouteClass.getTicketPoolRoute());
         break;
       case 3:
-        Get.toNamed(RouteClass.getJoblistRoute());
+        Get.toNamed(RouteClass.getHomeRoute());
         break;
       case 4:
         Get.toNamed(RouteClass.getMasterCategoryRoute());

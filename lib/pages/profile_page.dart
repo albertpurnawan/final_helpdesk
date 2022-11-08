@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
-class ReportPage extends StatelessWidget {
-  const ReportPage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Report"),
+        title: const Text("Profile"),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),

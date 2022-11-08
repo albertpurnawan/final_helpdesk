@@ -1,13 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/drawer.dart';
+import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class MasterCategoryPage extends StatefulWidget {
   const MasterCategoryPage({super.key});
 
   @override
   State<MasterCategoryPage> createState() => _MasterCategoryPageState();
+}
+
+class MasterCategoryData extends DataTableSource {
+  final List<Map<String, dynamic>> data = List.generate(
+    100,
+    (index) => {
+      "support_category": "support_category $index",
+      "created_by": "created_by $index",
+      "created_at": "created_at $index",
+      "updated_by": "updated_by $index",
+      "updated_at": "updated_at $index",
+    },
+  );
+
+  @override
+  DataRow? getRow(int index) {
+    return DataRow(cells: [
+      DataCell(Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.edit, size: 16),
+            onPressed: () {
+              print('edit clicked');
+            },
+          ),
+          // const SizedBox(width: 5),
+          IconButton(
+            icon: const Icon(Icons.delete, size: 16),
+            onPressed: () {
+              print('delete clicked');
+            },
+          ),
+        ],
+      )),
+      DataCell(Text(data[index]['support_category'])),
+      DataCell(Text(data[index]['created_by'])),
+      DataCell(Text(data[index]['created_at'])),
+      DataCell(Text(data[index]['updated_by'])),
+      DataCell(Text(data[index]['updated_at'])),
+    ]);
+  }
+
+  @override
+  bool get isRowCountApproximate => false;
+
+  @override
+  int get rowCount => data.length;
+
+  @override
+  int get selectedRowCount => 0;
 }
 
 class _MasterCategoryPageState extends State<MasterCategoryPage> {
@@ -18,6 +68,8 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
     "Sub Category 2"
   ];
 
+  final DataTableSource data = MasterCategoryData();
+
   int current = 0;
 
   @override
@@ -25,7 +77,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
     return Scaffold(
       backgroundColor: Colors.green[50],
       appBar: const MyAppBar(),
-      drawer: const MyDrawer(),
+      // drawer: const MyDrawer(),
       body: Container(
         margin: const EdgeInsets.all(20),
         width: double.infinity,
@@ -98,23 +150,84 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
             ),
 
             // MAIN BODY
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              width: double.infinity,
-              height: 500,
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    tabItems[current],
-                  ),
-                ],
-              ),
+            // Container(
+            //   margin: const EdgeInsets.only(top: 20),
+            //   width: double.infinity,
+            //   height: 500,
+            //   color: Colors.white,
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Text(
+            //         tabItems[current],
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            const SizedBox(height: 10),
+            PaginatedDataTable(
+              columns: const [
+                DataColumn(label: Text("Actions")),
+                DataColumn(label: Text("Support Category")),
+                DataColumn(label: Text("Created By")),
+                DataColumn(label: Text("Created At")),
+                DataColumn(label: Text("Updated By")),
+                DataColumn(label: Text("Updated At")),
+              ],
+              columnSpacing: 40,
+              rowsPerPage: 5,
+              // horizontalMargin: 20,
+              source: data,
             )
+            // SingleChildScrollView(
+            //   scrollDirection: Axis.horizontal,
+            //   child: DataTable(
+            //     decoration: BoxDecoration(
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(10),
+            //     ),
+            //     columns: const [
+            //       DataColumn(label: Text("Actions")),
+            //       DataColumn(label: Text("Support Category")),
+            //       DataColumn(label: Text("Created By")),
+            //       DataColumn(label: Text("Created At")),
+            //       DataColumn(label: Text("Updated By")),
+            //       DataColumn(label: Text("Updated At")),
+            //     ],
+            //     rows: [
+            //       DataRow(
+            //         cells: [
+            //           DataCell(Row(
+            //             children: [
+            //               IconButton(
+            //                 icon: const Icon(Icons.edit),
+            //                 onPressed: () {
+            //                   print('edit clicked');
+            //                 },
+            //               ),
+            //               // const SizedBox(width: 5),
+            //               IconButton(
+            //                 icon: const Icon(Icons.delete),
+            //                 onPressed: () {
+            //                   print('delete clicked');
+            //                 },
+            //               ),
+            //             ],
+            //           )),
+            //           const DataCell(Text("Server")),
+            //           const DataCell(Text("MM04994")),
+            //           const DataCell(Text("7/27/2022, 11:10:04 AM")),
+            //           const DataCell(Text("MM04994")),
+            //           const DataCell(Text("7/27/2022, 11:10:04 AM")),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavbar(),
     );
   }
 }
