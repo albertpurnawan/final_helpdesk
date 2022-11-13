@@ -36,18 +36,11 @@ dependencies:
   google_fonts: ^3.0.1
   get:
   lottie: ^1.4.3
-<<<<<<< HEAD
+
   file_picker: ^5.2.2
   syncfusion_flutter_datepicker: ^20.3.56
   intl: ^0.17.0
-=======
-  file_picker: ^5.2.2 
-  curved_navigation_bar: ^1.0.3 
-
-
-
->>>>>>> c27fc2b035f1e296484a947f6ba921751ecc0130
-
+  curved_navigation_bar: ^1.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
