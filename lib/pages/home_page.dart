@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/features_button.dart';
+import 'package:helpdesk_skripsi/style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: primaryColor,
       appBar: const MyAppBar(),
       // drawer: const MyDrawer(),
       bottomNavigationBar: const BottomNavbar(),
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.green[100],
+                color: secondaryColor,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.4),
@@ -43,16 +44,16 @@ class HomePage extends StatelessWidget {
                         child: Icon(
                           Icons.account_circle,
                           size: 80,
-                          color: Colors.green[900],
+                          color: primaryColor,
                         ),
                       ),
                     ),
                     Text(
-                      "Good Evening, Daniel",
+                      "Good Evening, Admin",
                       style: GoogleFonts.inter(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green[900],
+                        color: primaryColor,
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
             height: 30,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.green[100],
+              color: secondaryColor,
             ),
             child: Text(
               "Our Features",
@@ -85,7 +86,7 @@ class HomePage extends StatelessWidget {
               style: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Colors.green[900],
+                color: primaryColor,
               ),
             ),
           ),

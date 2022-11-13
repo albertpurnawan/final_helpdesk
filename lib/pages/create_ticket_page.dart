@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
@@ -23,7 +24,7 @@ class _CreateTicketState extends State<CreateTicket> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: primaryColor,
       // drawer: const MyDrawer(),
       appBar: const MyAppBar(),
       body: SingleChildScrollView(
@@ -40,7 +41,7 @@ class _CreateTicketState extends State<CreateTicket> {
                   // width: 300,
                   padding: const EdgeInsets.all(25),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: whiteColor,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(
@@ -60,7 +61,7 @@ class _CreateTicketState extends State<CreateTicket> {
                         style: GoogleFonts.inter(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: secondaryColor,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -68,10 +69,10 @@ class _CreateTicketState extends State<CreateTicket> {
                         '* Please fill all required inputs',
                         style: GoogleFonts.inter(
                           fontSize: 14,
-                          color: Colors.black,
+                          color: secondaryColor,
                         ),
                       ),
-                      const Divider(color: Colors.black),
+                      Divider(color: secondaryColor),
                       const SizedBox(height: 20),
                       const InputFieldWidget(hintText: "Request For *"),
                       const SizedBox(height: 20),
@@ -88,7 +89,7 @@ class _CreateTicketState extends State<CreateTicket> {
                         children: [
                           ElevatedButton.icon(
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.green[50],
+                              backgroundColor: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -98,19 +99,19 @@ class _CreateTicketState extends State<CreateTicket> {
                             },
                             icon: Icon(
                               Icons.add,
-                              color: Colors.green[600],
+                              color: secondaryColor,
                             ),
                             label: Text(
                               "Add New File",
                               style: GoogleFonts.inter(
-                                color: Colors.green[600],
+                                color: secondaryColor,
                                 fontSize: 14,
                               ),
                             ),
                           ),
                           TextButton(
                             style: TextButton.styleFrom(
-                              backgroundColor: Colors.green[200],
+                              backgroundColor: secondaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -119,7 +120,7 @@ class _CreateTicketState extends State<CreateTicket> {
                             child: Text(
                               "Submit",
                               style: GoogleFonts.inter(
-                                color: Colors.black,
+                                color: primaryColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -131,18 +132,18 @@ class _CreateTicketState extends State<CreateTicket> {
                       // notes
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.info_outline,
                             size: 20,
-                            color: Colors.blue,
+                            color: secondaryColor,
                           ),
                           const SizedBox(width: 10),
                           Text(
                             "File size must less than 2Mb",
                             style: GoogleFonts.inter(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: secondaryColor),
                           )
                         ],
                       )
@@ -159,7 +160,7 @@ class _CreateTicketState extends State<CreateTicket> {
                   padding: const EdgeInsets.all(20),
                   width: 400,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: whiteColor,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
                       BoxShadow(

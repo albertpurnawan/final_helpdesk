@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
+import 'package:helpdesk_skripsi/style.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -9,7 +10,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: primaryColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -25,23 +26,31 @@ class LoginPage extends StatelessWidget {
                 height: 80,
               ),
               TextFormField(
-                style: GoogleFonts.inter(color: Colors.black),
+                style: GoogleFonts.inter(color: secondaryColor),
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.person,
-                    color: Colors.red,
+                    color: secondaryColor,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                    borderSide: BorderSide(
+                      color: secondaryColor,
+                      width: 1.0,
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                    borderSide: BorderSide(
+                      color: secondaryColor,
+                      width: 1.0,
+                    ),
                   ),
                   hintText: 'Username',
-                  hintStyle:
-                      GoogleFonts.inter(color: Colors.black, fontSize: 14),
+                  hintStyle: GoogleFonts.inter(
+                    color: secondaryColor,
+                    fontSize: 14,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -49,23 +58,31 @@ class LoginPage extends StatelessWidget {
               ),
               TextFormField(
                 obscureText: true,
-                style: GoogleFonts.inter(color: Colors.black),
+                style: GoogleFonts.inter(color: secondaryColor),
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.lock,
-                    color: Colors.red,
+                    color: secondaryColor,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                    borderSide: BorderSide(
+                      color: secondaryColor,
+                      width: 1.0,
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.0),
+                    borderSide: BorderSide(
+                      color: secondaryColor,
+                      width: 1.0,
+                    ),
                   ),
                   hintText: 'Password',
-                  hintStyle:
-                      GoogleFonts.inter(color: Colors.black, fontSize: 14),
+                  hintStyle: GoogleFonts.inter(
+                    color: secondaryColor,
+                    fontSize: 14,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -78,7 +95,7 @@ class LoginPage extends StatelessWidget {
                   height: 55,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: secondaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -88,10 +105,11 @@ class LoginPage extends StatelessWidget {
                     },
                     child: Text(
                       "SIGN IN",
-                      style: GoogleFonts.openSans(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
+                      style: GoogleFonts.inter(
+                        color: primaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -99,8 +117,12 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 "Copyright \u00a9 Mayora 2022",
+                style: GoogleFonts.inter(
+                  color: secondaryColor,
+                  fontSize: 14,
+                ),
               )
             ],
           ),

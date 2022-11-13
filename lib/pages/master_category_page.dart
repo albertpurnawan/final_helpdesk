@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
@@ -75,7 +76,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: primaryColor,
       appBar: const MyAppBar(),
       // drawer: const MyDrawer(),
       body: Container(
@@ -89,12 +90,13 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
             Text(
               "Manage Master Category",
               style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green[900]),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: secondaryColor,
+              ),
             ),
             Divider(
-              color: Colors.green.shade900,
+              color: secondaryColor,
               thickness: 1,
             ),
             const SizedBox(
@@ -127,7 +129,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                             : BorderRadius.circular(10),
                         border: current == index
                             ? Border.all(
-                                color: Colors.green.shade600,
+                                color: secondaryColor,
                                 width: 2,
                               )
                             : null,
@@ -136,10 +138,9 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                         child: Text(
                           tabItems[index],
                           style: GoogleFonts.inter(
-                              fontWeight: FontWeight.bold,
-                              color: current == index
-                                  ? Colors.black
-                                  : Colors.grey),
+                            fontWeight: FontWeight.bold,
+                            color: current == index ? blackColor : Colors.grey,
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -166,19 +167,19 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
             // ),
             const SizedBox(height: 10),
             PaginatedDataTable(
-              columns: const [
-                DataColumn(label: Text("Actions")),
-                DataColumn(label: Text("Support Category")),
-                DataColumn(label: Text("Created By")),
-                DataColumn(label: Text("Created At")),
-                DataColumn(label: Text("Updated By")),
-                DataColumn(label: Text("Updated At")),
-              ],
-              columnSpacing: 40,
-              rowsPerPage: 5,
-              // horizontalMargin: 20,
-              source: data,
-            )
+                columns: const [
+                  DataColumn(label: Text("Actions")),
+                  DataColumn(label: Text("Support Category")),
+                  DataColumn(label: Text("Created By")),
+                  DataColumn(label: Text("Created At")),
+                  DataColumn(label: Text("Updated By")),
+                  DataColumn(label: Text("Updated At")),
+                ],
+                columnSpacing: 40,
+                rowsPerPage: 5,
+                // horizontalMargin: 20,
+                source: data,
+                arrowHeadColor: secondaryColor)
             // SingleChildScrollView(
             //   scrollDirection: Axis.horizontal,
             //   child: DataTable(
