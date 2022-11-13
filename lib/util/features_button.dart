@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
+import 'package:helpdesk_skripsi/style.dart';
 
 class FeaturesButton extends StatelessWidget {
   final IconData icon;
@@ -47,7 +48,7 @@ class FeaturesButton extends StatelessWidget {
             // width: 100,
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: whiteColor,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
@@ -61,7 +62,7 @@ class FeaturesButton extends StatelessWidget {
             child: Icon(
               icon,
               size: 30,
-              color: Colors.green[900],
+              color: secondaryColor,
             ),
           ),
         ),
@@ -72,7 +73,7 @@ class FeaturesButton extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.green[900],
+            color: secondaryColor,
           ),
         )
       ],

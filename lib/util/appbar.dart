@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/style.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -18,7 +19,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 padding: const EdgeInsets.all(10),
                 child: Icon(
                   Icons.dashboard_outlined,
-                  color: Colors.green[900],
+                  color: secondaryColor,
                 ),
                 // child: Center(
                 //   child: Image.asset(
@@ -32,9 +33,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 "Help Desk Mobile",
                 style: GoogleFonts.inter(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green[900]),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: secondaryColor,
+                ),
               ),
             ],
           ),

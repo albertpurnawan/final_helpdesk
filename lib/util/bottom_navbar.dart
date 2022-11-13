@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
+import 'package:helpdesk_skripsi/style.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -14,8 +15,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-      backgroundColor: Colors.green.shade50,
-      color: Colors.green.shade100,
+      backgroundColor: primaryColor,
+      color: secondaryColor,
       animationDuration: const Duration(milliseconds: 200),
       onTap: (index) {
         // print(index);
@@ -35,17 +36,17 @@ class _BottomNavbarState extends State<BottomNavbar> {
       items: [
         Icon(
           Icons.home,
-          color: Colors.green[800],
+          color: primaryColor,
           size: 28,
         ),
         Icon(
           Icons.add_rounded,
-          color: Colors.green[800],
+          color: primaryColor,
           size: 28,
         ),
         Icon(
           Icons.person,
-          color: Colors.green[800],
+          color: primaryColor,
           size: 28,
         ),
       ],
