@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
-import 'package:intl/intl.dart';
 
 import '../util/appbar.dart';
 
@@ -24,7 +24,7 @@ class TicketPoolBody extends State<TicketPoolPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: primaryColor,
       appBar: const MyAppBar(),
       body: Container(
         margin: const EdgeInsets.all(20),
@@ -37,12 +37,13 @@ class TicketPoolBody extends State<TicketPoolPage> {
             Text(
               "List Of Ticket",
               style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green[900]),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: secondaryColor,
+              ),
             ),
             Divider(
-              color: Colors.green.shade900,
+              color: secondaryColor,
               thickness: 1,
             ),
             const SizedBox(
@@ -75,7 +76,7 @@ class TicketPoolBody extends State<TicketPoolPage> {
                             : BorderRadius.circular(10),
                         border: current == index
                             ? Border.all(
-                                color: Colors.green.shade600,
+                                color: secondaryColor,
                                 width: 2,
                               )
                             : null,
@@ -84,10 +85,9 @@ class TicketPoolBody extends State<TicketPoolPage> {
                         child: Text(
                           tabItems[index],
                           style: GoogleFonts.inter(
-                              fontWeight: FontWeight.bold,
-                              color: current == index
-                                  ? Colors.black
-                                  : Colors.grey),
+                            fontWeight: FontWeight.bold,
+                            color: current == index ? blackColor : Colors.grey,
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -104,8 +104,8 @@ class TicketPoolBody extends State<TicketPoolPage> {
               source: _dataIssue,
               columnSpacing: 40,
               horizontalMargin: 25,
-              rowsPerPage: 8,
-              arrowHeadColor: Colors.green,
+              rowsPerPage: 6,
+              arrowHeadColor: secondaryColor,
             ),
           ],
         ),
@@ -349,9 +349,12 @@ class MyData extends DataTableSource {
     ]);
   }
 
+  @override
   bool get isRowCountApproximate => false;
 
+  @override
   int get rowCount => _dataIssue.length;
 
+  @override
   int get selectedRowCount => 0;
 }

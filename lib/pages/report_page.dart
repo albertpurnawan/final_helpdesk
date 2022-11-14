@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/style.dart';
 import 'package:intl/intl.dart';
 import '../util/appbar.dart';
 import '../util/bottom_navbar.dart';
@@ -27,124 +28,126 @@ class ReportBody extends State<ReportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: primaryColor,
       appBar: const MyAppBar(),
       body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          // color: Colors.red,
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            // Create Ticket Card
+        width: double.infinity,
+        height: double.infinity,
+        // color: Colors.red,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                child: Column(children: [
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: Column(
+                children: [
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            const SizedBox(
-                              child: Text(
-                                "From: ",
-                                style: TextStyle(fontSize: 10),
-                              ),
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          const SizedBox(
+                            child: Text(
+                              "From: ",
+                              style: TextStyle(fontSize: 10),
                             ),
-                            SizedBox(
-                              width: 90,
-                              height: 25,
-                              child: TextField(
-                                  style: const TextStyle(
-                                      fontSize: 10.0,
-                                      height: 0.0,
-                                      color: Colors.black),
-                                  controller:
-                                      dateControllerFrom, //editing controller of this TextField
-                                  decoration: const InputDecoration(
-                                      icon: Icon(
-                                        Icons.calendar_today,
-                                        size: 15.0,
-                                      ), //icon of text field
-                                      labelText:
-                                          "dd/mm/yyyy" //label text of field
-                                      ),
-                                  readOnly:
-                                      true, // when true user cannot edit text
-                                  onTap: () async {
-                                    //when click we have to show the datepicker
-                                    DateTime? pickedDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(2000),
-                                        lastDate: DateTime(2100));
-                                    if (pickedDate != null) {
-                                      String formatedDate =
-                                          DateFormat("dd/MM/yyyy")
-                                              .format(pickedDate);
-                                      setState(() {
-                                        dateControllerFrom.text = formatedDate;
-                                      });
-                                    } else {}
-                                  }),
-                            ),
-                            const SizedBox(child: Text("To: ")),
-                            SizedBox(
-                              width: 90,
-                              height: 15,
-                              child: TextField(
-                                  style: const TextStyle(
-                                      fontSize: 10.0,
-                                      height: 2.0,
-                                      color: Colors.black),
-                                  controller:
-                                      dateControllerTo, //editing controller of this TextField
-                                  decoration: const InputDecoration(
+                          ),
+                          SizedBox(
+                            width: 90,
+                            height: 25,
+                            child: TextField(
+                                style: TextStyle(
+                                    fontSize: 10.0,
+                                    height: 0.0,
+                                    color: blackColor),
+                                controller:
+                                    dateControllerFrom, //editing controller of this TextField
+                                decoration: const InputDecoration(
                                     icon: Icon(
                                       Icons.calendar_today,
                                       size: 15.0,
                                     ), //icon of text field
-                                    labelText: "dd/mm/yyyy",
-                                    //label text of field
-                                  ),
-                                  readOnly:
-                                      true, // when true user cannot edit text
-                                  onTap: () async {
-                                    //when click we have to show the datepicker
-                                    DateTime? pickedDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(2000),
-                                        lastDate: DateTime(2100));
-                                    if (pickedDate != null) {
-                                      String formatedDate =
-                                          DateFormat("dd/MM/yyyy")
-                                              .format(pickedDate);
-                                      setState(() {
-                                        dateControllerTo.text = formatedDate;
-                                      });
-                                    } else {}
-                                  }),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.green[200],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                                    labelText:
+                                        "dd/mm/yyyy" //label text of field
+                                    ),
+                                readOnly:
+                                    true, // when true user cannot edit text
+                                onTap: () async {
+                                  //when click we have to show the datepicker
+                                  DateTime? pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(2000),
+                                      lastDate: DateTime(2100));
+                                  if (pickedDate != null) {
+                                    String formatedDate =
+                                        DateFormat("dd/MM/yyyy")
+                                            .format(pickedDate);
+                                    setState(() {
+                                      dateControllerFrom.text = formatedDate;
+                                    });
+                                  } else {}
+                                }),
                           ),
-                          onPressed: () {},
-                          child: Text(
-                            "Export to Excel",
-                            style: GoogleFonts.inter(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          const SizedBox(child: Text("To: ")),
+                          SizedBox(
+                            width: 90,
+                            height: 15,
+                            child: TextField(
+                                style: TextStyle(
+                                    fontSize: 10.0,
+                                    height: 2.0,
+                                    color: blackColor),
+                                controller:
+                                    dateControllerTo, //editing controller of this TextField
+                                decoration: const InputDecoration(
+                                  icon: Icon(
+                                    Icons.calendar_today,
+                                    size: 15.0,
+                                  ), //icon of text field
+                                  labelText: "dd/mm/yyyy",
+                                  //label text of field
+                                ),
+                                readOnly:
+                                    true, // when true user cannot edit text
+                                onTap: () async {
+                                  //when click we have to show the datepicker
+                                  DateTime? pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(2000),
+                                      lastDate: DateTime(2100));
+                                  if (pickedDate != null) {
+                                    String formatedDate =
+                                        DateFormat("dd/MM/yyyy")
+                                            .format(pickedDate);
+                                    setState(() {
+                                      dateControllerTo.text = formatedDate;
+                                    });
+                                  } else {}
+                                }),
+                          ),
+                        ],
+                      ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: secondaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                      ]),
+                        onPressed: () {},
+                        child: Text(
+                          "Export to Excel",
+                          style: GoogleFonts.inter(
+                            color: primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -153,11 +156,15 @@ class ReportBody extends State<ReportPage> {
                     source: _dataIssue,
                     columnSpacing: 40,
                     horizontalMargin: 25,
-                    rowsPerPage: 8,
-                    arrowHeadColor: Colors.green,
+                    rowsPerPage: 7,
+                    arrowHeadColor: secondaryColor,
                   ),
-                ]))
-          ])),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: const BottomNavbar(),
     );
   }
@@ -628,9 +635,12 @@ class MyData extends DataTableSource {
     ]);
   }
 
+  @override
   bool get isRowCountApproximate => false;
 
+  @override
   int get rowCount => _dataIssue.length;
 
+  @override
   int get selectedRowCount => 0;
 }
