@@ -16,7 +16,7 @@ class _BrowsePageState extends State<BrowsePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(title: 'Browse Ticket'),
       backgroundColor: primaryColor,
       body: SingleChildScrollView(
         child: Padding(

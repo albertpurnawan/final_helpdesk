@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/tabs/category_tab.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
@@ -27,9 +28,9 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
       length: 4,
       child: Scaffold(
         backgroundColor: primaryColor,
-        appBar: const MyAppBar(),
-        // drawer: const MyDrawer(),
+        appBar: const MyAppBar(title: "Master Category"),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TabBar(
               physics: const BouncingScrollPhysics(),
@@ -39,37 +40,84 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                 Tab(
                   child: Text(
                     "Support Category",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
                       color: secondaryColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "Category",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
                       color: secondaryColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "Sub Category 1",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
                       color: secondaryColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Tab(
                   child: Text(
                     "Sub Category 2",
-                    style: TextStyle(
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
                       color: secondaryColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             ),
+
+            // ADD NEW CATEGORY BUTTON
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 5, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Support Category",
+                    style: GoogleFonts.inter(
+                      fontSize: 22,
+                      color: secondaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  ElevatedButton.icon(
+                    style: TextButton.styleFrom(
+                      backgroundColor: whiteColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.add,
+                      color: secondaryColor,
+                    ),
+                    label: Text(
+                      "Add",
+                      style: GoogleFonts.inter(
+                        color: secondaryColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             const Expanded(
               child: TabBarView(
                 physics: BouncingScrollPhysics(),

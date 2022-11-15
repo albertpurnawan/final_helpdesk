@@ -26,7 +26,7 @@ class _CreateTicketState extends State<CreateTicket> {
     return Scaffold(
       backgroundColor: primaryColor,
       // drawer: const MyDrawer(),
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(title: "Create Ticket"),
       body: SingleChildScrollView(
         // child: SafeArea(
         child: Padding(

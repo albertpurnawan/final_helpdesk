@@ -46,86 +46,83 @@ class _CategoryTabState extends State<CategoryTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.red,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: ListView.builder(
-          itemCount: _items.length,
-          itemBuilder: (context, index) {
-            final item = _items[index];
-            return Card(
-              key: PageStorageKey(item['id']),
-              color: secondaryColor,
-              elevation: 2,
-              child: ExpansionTile(
-                collapsedIconColor: primaryColor,
-                iconColor: primaryColor,
-                childrenPadding: const EdgeInsets.all(5),
-                // expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                title: Text(
-                  item['title'],
-                  style: TextStyle(color: primaryColor),
-                ),
-                children: [
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "Created by: ${item['created_by']}",
-                            style: TextStyle(color: primaryColor),
-                          ),
-                          Text(
-                            "Created at: ${item['created_at']}",
-                            style: TextStyle(color: primaryColor),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "Updated by: ${item['updated_by']}",
-                            style: TextStyle(color: primaryColor),
-                          ),
-                          Text(
-                            "Updated at: ${item['updated_at']}",
-                            style: TextStyle(color: primaryColor),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          // BUTTON EDIT
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.edit,
-                              color: primaryColor,
-                            ),
-                          ),
-                          // BUTTON DELETE
-                          IconButton(
-                            onPressed: () {
-                              _removeItem(index);
-                            },
-                            icon: Icon(
-                              Icons.delete,
-                              color: primaryColor,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                ],
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: ListView.builder(
+        itemCount: _items.length,
+        itemBuilder: (context, index) {
+          final item = _items[index];
+          return Card(
+            key: PageStorageKey(item['id']),
+            color: secondaryColor,
+            elevation: 2,
+            child: ExpansionTile(
+              collapsedIconColor: primaryColor,
+              iconColor: primaryColor,
+              childrenPadding: const EdgeInsets.all(5),
+              // expandedCrossAxisAlignment: CrossAxisAlignment.end,
+              title: Text(
+                item['title'],
+                style: TextStyle(color: primaryColor),
               ),
-            );
-          },
-        ),
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Created by: ${item['created_by']}",
+                          style: TextStyle(color: primaryColor),
+                        ),
+                        Text(
+                          "Created at: ${item['created_at']}",
+                          style: TextStyle(color: primaryColor),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Updated by: ${item['updated_by']}",
+                          style: TextStyle(color: primaryColor),
+                        ),
+                        Text(
+                          "Updated at: ${item['updated_at']}",
+                          style: TextStyle(color: primaryColor),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // BUTTON EDIT
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit,
+                            color: primaryColor,
+                          ),
+                        ),
+                        // BUTTON DELETE
+                        IconButton(
+                          onPressed: () {
+                            _removeItem(index);
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            color: primaryColor,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }
