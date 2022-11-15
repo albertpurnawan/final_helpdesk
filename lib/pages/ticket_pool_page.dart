@@ -25,7 +25,7 @@ class TicketPoolBody extends State<TicketPoolPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(title: "Ticket Pool"),
       body: Container(
         margin: const EdgeInsets.all(20),
         width: double.infinity,

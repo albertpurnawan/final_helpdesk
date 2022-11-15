@@ -3,14 +3,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({super.key});
+  final String title;
+
+  const MyAppBar({
+    super.key,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
+      automaticallyImplyLeading: false,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             children: [
@@ -27,11 +33,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 //   ),
                 // ),
               ),
-              const SizedBox(
-                width: 10,
-              ),
               Text(
-                "Help Desk Mobile",
+                title,
                 style: GoogleFonts.inter(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

@@ -29,7 +29,7 @@ class ReportBody extends State<ReportPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(title: "Report Helpdesk"),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
