@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(title: "Help Desk Mobile"),
       // drawer: const MyDrawer(),
       bottomNavigationBar: const BottomNavbar(),
       body: Column(

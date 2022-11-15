@@ -22,6 +22,14 @@ class LoginPage extends StatelessWidget {
                 width: 150,
                 height: 150,
               ),
+              Text(
+                "Helpdesk Mobile",
+                style: GoogleFonts.inter(
+                  color: secondaryColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(
                 height: 80,
               ),
