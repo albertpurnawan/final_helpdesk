@@ -40,68 +40,75 @@ class _BrowsePageState extends State<BrowsePage> {
                     elevation: 10,
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 20, bottom: 20, top: 30),
-                              child: SizedBox(
-                                width: 130,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Ticket Number",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 15,
-                                          color: secondaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // COLUMN KIRI
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Ticket Number",
+                                    style: GoogleFonts.inter(
+                                        fontSize: 15,
+                                        color: secondaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Text(
                                       allIssue[index].ticketNum.toString(),
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: secondaryColor,
                                       ),
                                     ),
-                                    Text(
-                                      "Request For",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 15,
-                                          color: secondaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      allIssue[index].requestFor.toString(),
-                                      style: GoogleFonts.inter(
-                                        fontSize: 12,
+                                  ),
+                                  Text(
+                                    "Request For",
+                                    style: GoogleFonts.inter(
+                                        fontSize: 15,
                                         color: secondaryColor,
-                                      ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    Text(
-                                      "Status",
-                                      style: GoogleFonts.inter(
-                                          fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: SizedBox(
+                                      width: 130,
+                                      child: Text(
+                                        allIssue[index].requestFor.toString(),
+                                        style: GoogleFonts.inter(
+                                          fontSize: 12,
                                           color: secondaryColor,
-                                          fontWeight: FontWeight.bold),
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    Text(
+                                  ),
+                                  Text(
+                                    "Status",
+                                    style: GoogleFonts.inter(
+                                        fontSize: 15,
+                                        color: secondaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Text(
                                       allIssue[index].status.toString(),
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: secondaryColor,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              width: 140,
-                              child: Column(
+                              // COLUMN KANAN
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -111,12 +118,15 @@ class _BrowsePageState extends State<BrowsePage> {
                                         color: secondaryColor,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(
-                                    DateFormat.yMd()
-                                        .format(allIssue[index].createdDate),
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      color: secondaryColor,
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Text(
+                                      DateFormat.yMd()
+                                          .format(allIssue[index].createdDate),
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        color: secondaryColor,
+                                      ),
                                     ),
                                   ),
                                   Text(
@@ -126,14 +136,19 @@ class _BrowsePageState extends State<BrowsePage> {
                                         color: secondaryColor,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(
-                                    allIssue[index].createdBy.toString(),
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      color: secondaryColor,
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: SizedBox(
+                                      width: 130,
+                                      child: Text(
+                                        allIssue[index].createdBy.toString(),
+                                        style: GoogleFonts.inter(
+                                          fontSize: 12,
+                                          color: secondaryColor,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
                                   ),
                                   Text(
                                     "Support Category",
@@ -142,31 +157,33 @@ class _BrowsePageState extends State<BrowsePage> {
                                         color: secondaryColor,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(
-                                    allIssue[index].supportCategory.toString(),
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      color: secondaryColor,
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Text(
+                                      allIssue[index]
+                                          .supportCategory
+                                          .toString(),
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        color: secondaryColor,
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                        ),
+                        Text(
+                          "Issue Desc",
+                          style: GoogleFonts.inter(
+                              fontSize: 15,
+                              color: secondaryColor,
+                              fontWeight: FontWeight.bold),
                         ),
                         Container(
                           padding: const EdgeInsets.only(
-                              left: 20, right: 20, bottom: 5),
-                          child: Text(
-                            "Issue Desc",
-                            style: GoogleFonts.inter(
-                                fontSize: 15,
-                                color: secondaryColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
+                              left: 20, right: 20, bottom: 20),
                           child: Text(
                             allIssue[index].issueDesc.toString(),
                             style: GoogleFonts.inter(
