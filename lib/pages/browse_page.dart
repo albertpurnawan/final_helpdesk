@@ -36,7 +36,6 @@ class _BrowsePageState extends State<BrowsePage> {
                   final issue = issueData[index];
                   return GestureDetector(
                     child: buildCard(issue),
-                    onDoubleTap: () => Navigator.push(context, ),
                   );
                 },
               ),
