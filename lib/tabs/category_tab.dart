@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class CategoryTab extends StatefulWidget {
   const CategoryTab({super.key});
@@ -36,12 +39,12 @@ class _CategoryTabState extends State<CategoryTab> {
       _items.removeWhere((element) => element['id'] == id);
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Item #$id has been removed"),
-        duration: const Duration(milliseconds: 500),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: Text("Item #$id has been removed"),
+    //     duration: const Duration(milliseconds: 500),
+    //   ),
+    // );
   }
 
   @override
@@ -99,7 +102,69 @@ class _CategoryTabState extends State<CategoryTab> {
                       children: [
                         // BUTTON EDIT
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AwesomeDialog(
+                              context: context,
+                              animType: AnimType.scale,
+                              headerAnimationLoop: false,
+                              showCloseIcon: true,
+                              dialogType: DialogType.info,
+                              keyboardAware: true,
+                              body: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Update',
+                                      style:
+                                          Theme.of(context).textTheme.headline6,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Material(
+                                      elevation: 0,
+                                      color: Colors.blueGrey.withAlpha(40),
+                                      child: TextFormField(
+                                        autofocus: false,
+                                        minLines: 1,
+                                        decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                          labelText: 'Title',
+                                          prefixIcon: Icon(Icons.text_fields),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    //ADD BUTTON
+                                    ElevatedButton.icon(
+                                      style: TextButton.styleFrom(
+                                        backgroundColor: secondaryColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: primaryColor,
+                                      ),
+                                      label: Text(
+                                        "Update Category",
+                                        style: GoogleFonts.inter(
+                                          color: primaryColor,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ).show();
+                          },
                           icon: Icon(
                             Icons.edit,
                             color: primaryColor,
@@ -108,7 +173,74 @@ class _CategoryTabState extends State<CategoryTab> {
                         // BUTTON DELETE
                         IconButton(
                           onPressed: () {
-                            _removeItem(index);
+                            AwesomeDialog(
+                              context: context,
+                              dismissOnTouchOutside: false,
+                              dialogType: DialogType.error,
+                              buttonsBorderRadius:
+                                  const BorderRadius.all(Radius.circular(6)),
+                              headerAnimationLoop: false,
+                              animType: AnimType.bottomSlide,
+                              title: 'Remove',
+                              desc:
+                                  'Are you sure want to remove this category?',
+                              showCloseIcon: true,
+                              btnCancel: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6),
+                                    side: BorderSide(
+                                      color: secondaryColor,
+                                      width: 2,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: secondaryColor),
+                                ),
+                              ),
+                              btnOk: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: secondaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  _removeItem(index);
+                                  Get.back();
+                                },
+                                child: Text(
+                                  "Yes",
+                                  style: TextStyle(color: primaryColor),
+                                ),
+                              ),
+                            ).show();
+                            // Get.defaultDialog(
+                            //   title: "Remove Category",
+                            //   middleText:
+                            //       "Are you sure want to delete this category?",
+                            //   actions: [
+                            //     ElevatedButton(
+                            //       onPressed: () {
+                            //         _removeItem(index);
+                            //         Get.back();
+                            //       },
+                            //       child: const Text("Yes"),
+                            //     ),
+                            //     ElevatedButton(
+                            //       onPressed: () {
+                            //         Get.back();
+                            //       },
+                            //       child: const Text("Cancel"),
+                            //     ),
+                            //   ],
+                            // );
                           },
                           icon: Icon(
                             Icons.delete,

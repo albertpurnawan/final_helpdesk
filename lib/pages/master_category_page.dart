@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
@@ -96,20 +97,80 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                   ),
                   ElevatedButton.icon(
                     style: TextButton.styleFrom(
-                      backgroundColor: whiteColor,
+                      backgroundColor: secondaryColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      AwesomeDialog(
+                        context: context,
+                        animType: AnimType.scale,
+                        headerAnimationLoop: false,
+                        showCloseIcon: true,
+                        dialogType: DialogType.info,
+                        keyboardAware: true,
+                        body: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Add',
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Material(
+                                elevation: 0,
+                                color: Colors.blueGrey.withAlpha(40),
+                                child: TextFormField(
+                                  autofocus: false,
+                                  minLines: 1,
+                                  decoration: const InputDecoration(
+                                    border: InputBorder.none,
+                                    labelText: 'Title',
+                                    prefixIcon: Icon(Icons.text_fields),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              //ADD BUTTON
+                              ElevatedButton.icon(
+                                style: TextButton.styleFrom(
+                                  backgroundColor: secondaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.add,
+                                  color: primaryColor,
+                                ),
+                                label: Text(
+                                  "Add New Category",
+                                  style: GoogleFonts.inter(
+                                    color: primaryColor,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ).show();
+                    },
                     icon: Icon(
                       Icons.add,
-                      color: secondaryColor,
+                      color: primaryColor,
                     ),
                     label: Text(
                       "Add",
                       style: GoogleFonts.inter(
-                        color: secondaryColor,
+                        color: primaryColor,
                         fontSize: 14,
                       ),
                     ),
