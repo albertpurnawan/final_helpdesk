@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:helpdesk_skripsi/pages/Detail_page.dart';
 import 'package:helpdesk_skripsi/pages/browse_page.dart';
 import 'package:helpdesk_skripsi/pages/create_ticket_page.dart';
 import 'package:helpdesk_skripsi/pages/dashboard_page.dart';
@@ -19,6 +20,7 @@ class RouteClass {
   static String report = "/report";
   static String browse = "/browse";
   static String joblist = "/joblist";
+  static String detail = "/detail";
 
   static String getLoginRoute() => login;
   static String getDashboardRoute() => dashboard;
@@ -29,6 +31,7 @@ class RouteClass {
   static String getReportRoute() => report;
   static String getBrowseRoute() => browse;
   static String getJoblistRoute() => joblist;
+  static String getDetailRoute() => detail;
 
 // kalo mau balik ke page sebelumnya di OnTap kasih Get.back()
 // kalo mau menuju page selanjutnya di OnTap kasih contoh:
@@ -48,5 +51,8 @@ class RouteClass {
     GetPage(name: report, page: () => const ReportPage()),
     GetPage(name: browse, page: () => const BrowsePage()),
     GetPage(name: joblist, page: () => const JoblistPage()),
+    GetPage(
+        name: '${RouteClass.detail}/:tickteNum',
+        page: () => const DetailPage()),
   ];
 }
