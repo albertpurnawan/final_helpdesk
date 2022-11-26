@@ -9,11 +9,12 @@ class FeaturesButton extends StatelessWidget {
   final String featuresText;
   final int index;
 
-  const FeaturesButton(
-      {super.key,
-      required this.icon,
-      required this.featuresText,
-      required this.index});
+  const FeaturesButton({
+    super.key,
+    required this.icon,
+    required this.featuresText,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
