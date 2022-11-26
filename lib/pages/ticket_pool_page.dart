@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 import '../util/appbar.dart';
 
@@ -25,7 +24,7 @@ class TicketPoolBody extends State<TicketPoolPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(title: "Ticket Pool"),
+      appBar: const MyAppBar(title: "Ticket Pool", showBackBtn: true),
       body: Container(
         margin: const EdgeInsets.all(20),
         width: double.infinity,
@@ -110,7 +109,7 @@ class TicketPoolBody extends State<TicketPoolPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
     );
   }
 }

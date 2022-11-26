@@ -221,26 +221,6 @@ class _CategoryTabState extends State<CategoryTab> {
                                 ),
                               ),
                             ).show();
-                            // Get.defaultDialog(
-                            //   title: "Remove Category",
-                            //   middleText:
-                            //       "Are you sure want to delete this category?",
-                            //   actions: [
-                            //     ElevatedButton(
-                            //       onPressed: () {
-                            //         _removeItem(index);
-                            //         Get.back();
-                            //       },
-                            //       child: const Text("Yes"),
-                            //     ),
-                            //     ElevatedButton(
-                            //       onPressed: () {
-                            //         Get.back();
-                            //       },
-                            //       child: const Text("Cancel"),
-                            //     ),
-                            //   ],
-                            // );
                           },
                           icon: Icon(
                             Icons.delete,

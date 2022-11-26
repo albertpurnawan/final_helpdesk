@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -12,7 +11,7 @@ class DashboardPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
       // drawer: const MyDrawer(),
     );
   }

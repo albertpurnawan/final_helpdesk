@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -12,7 +11,7 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
       // drawer: const MyDrawer(),
     );
   }

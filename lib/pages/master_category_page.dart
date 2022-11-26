@@ -1,10 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/tabs/category_tab.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 
 class MasterCategoryPage extends StatefulWidget {
   const MasterCategoryPage({super.key});
@@ -14,6 +14,8 @@ class MasterCategoryPage extends StatefulWidget {
 }
 
 class _MasterCategoryPageState extends State<MasterCategoryPage> {
+  final textController = TextEditingController();
+
   List<String> tabItems = [
     "Support Category",
     "Category",
@@ -29,7 +31,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
       length: 4,
       child: Scaffold(
         backgroundColor: primaryColor,
-        appBar: const MyAppBar(title: "Master Category"),
+        appBar: const MyAppBar(title: "Master Category", showBackBtn: true),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -132,11 +134,13 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                                     labelText: 'Title',
                                     prefixIcon: Icon(Icons.text_fields),
                                   ),
+                                  controller: textController,
                                 ),
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
+
                               //ADD BUTTON
                               ElevatedButton.icon(
                                 style: TextButton.styleFrom(
@@ -145,7 +149,11 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                                     borderRadius: BorderRadius.circular(6),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    Get.back();
+                                  });
+                                },
                                 icon: Icon(
                                   Icons.add,
                                   color: primaryColor,
@@ -192,7 +200,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
             )
           ],
         ),
-        bottomNavigationBar: const BottomNavbar(),
+        // bottomNavigationBar: const BottomNavbar(),
       ),
     );
   }

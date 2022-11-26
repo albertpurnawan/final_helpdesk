@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/input_field.dart';
 import 'package:lottie/lottie.dart';
 
@@ -21,12 +20,28 @@ class CreateTicket extends StatefulWidget {
 class _CreateTicketState extends State<CreateTicket> {
   String _fileText = "";
 
+  void selectMultipleFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      // allowedExtensions: ['jpg', 'pdf', 'doc'],
+      allowMultiple: true,
+    );
+
+    if (result != null) {
+      List<File> files = result.paths.map((path) => File(path!)).toList();
+      setState(() {
+        _fileText = files.toString();
+      });
+    } else {
+      // user canceled the picker
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
       // drawer: const MyDrawer(),
-      appBar: const MyAppBar(title: "Create Ticket"),
+      appBar: const MyAppBar(title: "Create Ticket", showBackBtn: false),
       body: SingleChildScrollView(
         // child: SafeArea(
         child: Padding(
@@ -196,23 +211,7 @@ class _CreateTicketState extends State<CreateTicket> {
         ),
         // ),
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
     );
-  }
-
-  void selectMultipleFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      // allowedExtensions: ['jpg', 'pdf', 'doc'],
-      allowMultiple: true,
-    );
-
-    if (result != null) {
-      List<File> files = result.paths.map((path) => File(path!)).toList();
-      setState(() {
-        _fileText = files.toString();
-      });
-    } else {
-      // user canceled the picker
-    }
   }
 }

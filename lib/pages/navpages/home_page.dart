@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/features_button.dart';
 import 'package:helpdesk_skripsi/style.dart';
 
@@ -12,9 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(title: "Help Desk Mobile"),
-      // drawer: const MyDrawer(),
-      bottomNavigationBar: const BottomNavbar(),
+      appBar: const MyAppBar(title: "Help Desk Mobile", showBackBtn: false),
       body: Column(
         children: [
           Padding(
@@ -57,15 +54,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Text(
-                    //   "Here's your job list. Don't forget to do your best at every moment that you have. Enjoy Your Work!",
-                    //   style: GoogleFonts.inter(
-                    //     fontSize: 12,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.green[900],
-                    //   ),
-                    // ),
-                    // Container(height: 200, color: Colors.red)
                   ],
                 ),
               ),
