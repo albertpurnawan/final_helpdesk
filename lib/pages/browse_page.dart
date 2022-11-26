@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/Model/browse_model.dart';
 import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
@@ -6,6 +7,8 @@ import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/searchBar.dart';
 import 'package:intl/intl.dart';
+
+import '../routes/routes.dart';
 
 class BrowsePage extends StatefulWidget {
   const BrowsePage({super.key});
@@ -35,6 +38,9 @@ class _BrowsePageState extends State<BrowsePage> {
                   final issue = issueData[index];
                   return GestureDetector(
                     child: buildCard(issue),
+                    onTap: () {
+                      Get.toNamed('${RouteClass.detail}/${issue.ticketNum}');
+                    },
                   );
                 },
               ),
