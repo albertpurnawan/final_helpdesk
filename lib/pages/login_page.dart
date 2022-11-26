@@ -109,7 +109,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Get.toNamed(RouteClass.getHomeRoute());
+                      Get.toNamed(RouteClass.getMainPageRoute());
                     },
                     child: Text(
                       "SIGN IN",

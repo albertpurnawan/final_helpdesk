@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:intl/intl.dart';
 import '../util/appbar.dart';
-import '../util/bottom_navbar.dart';
 
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
@@ -29,7 +28,7 @@ class ReportBody extends State<ReportPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      appBar: const MyAppBar(title: "Report Helpdesk"),
+      appBar: const MyAppBar(title: "Report Helpdesk", showBackBtn: true),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -165,7 +164,7 @@ class ReportBody extends State<ReportPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
     );
   }
 }

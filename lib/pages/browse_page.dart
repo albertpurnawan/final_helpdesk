@@ -4,7 +4,6 @@ import 'package:helpdesk_skripsi/Model/browse_model.dart';
 import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
-import 'package:helpdesk_skripsi/util/bottom_navbar.dart';
 import 'package:helpdesk_skripsi/util/searchBar.dart';
 import 'package:intl/intl.dart';
 
@@ -22,7 +21,7 @@ class _BrowsePageState extends State<BrowsePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(title: 'Browse Ticket'),
+      appBar: const MyAppBar(title: 'Browse Ticket', showBackBtn: true),
       backgroundColor: primaryColor,
       body: Column(
         children: [
@@ -43,7 +42,7 @@ class _BrowsePageState extends State<BrowsePage> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      // bottomNavigationBar: const BottomNavbar(),
       // drawer: const MyDrawer(),
     );
   }

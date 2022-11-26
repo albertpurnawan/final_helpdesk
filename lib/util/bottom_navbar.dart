@@ -1,8 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:helpdesk_skripsi/routes/routes.dart';
-import 'package:helpdesk_skripsi/style.dart';
+import 'package:helpdesk_skripsi/pages/navpages/create_ticket_page.dart';
+import 'package:helpdesk_skripsi/pages/navpages/home_page.dart';
+import 'package:helpdesk_skripsi/pages/navpages/profile_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -12,68 +11,74 @@ class BottomNavbar extends StatefulWidget {
 }
 
 class _BottomNavbarState extends State<BottomNavbar> {
+  // int _selectedIndex = 0;
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
+  List pages = [
+    const HomePage(),
+    const CreateTicket(),
+    const ProfilePage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return CurvedNavigationBar(
-      backgroundColor: primaryColor,
-      color: secondaryColor,
-      animationDuration: const Duration(milliseconds: 200),
-      onTap: (index) {
-        // print(index);
-        switch (index) {
-          case 0:
-            Get.toNamed(RouteClass.getHomeRoute());
-            break;
-          case 1:
-            Get.toNamed(RouteClass.getCreateTicketRoute());
-            break;
-          case 2:
-            // Get.toNamed(RouteClass.getHomeRoute());
-            print('ke profile page');
-            break;
-        }
-      },
-      items: [
-        Icon(
-          Icons.home,
-          color: primaryColor,
-          size: 28,
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "Home",
         ),
-        Icon(
-          Icons.add_rounded,
-          color: primaryColor,
-          size: 28,
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add),
+          label: "Create Ticket",
         ),
-        Icon(
-          Icons.person,
-          color: primaryColor,
-          size: 28,
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: "Profile",
         ),
       ],
+      // currentIndex: _selectedIndex,
+      // onTap: _onItemTapped,
     );
-
-    // return Container(
-    //   color: Colors.green.shade100,
-    //   child: Padding(
-    //     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-    //     child: GNav(
-
-    //       padding: const EdgeInsets.all(16),
-    //       backgroundColor: Colors.green.shade100,
-    //       activeColor: Colors.green.shade800,
-    //       tabBackgroundColor: Colors.green.shade300,
-    //       color: Colors.green.shade800,
-    //       gap: 15,
-    //       onTabChange: (index) {
-    //         print(index);
-    //       },
-    //       tabs: const [
-    //         GButton(icon: Icons.home, text: 'Home'),
-    //         GButton(icon: Icons.add, text: 'Create Ticket'),
-    //         GButton(icon: Icons.person, text: 'Profile'),
-    //       ],
+    // return CurvedNavigationBar(
+    //   backgroundColor: primaryColor,
+    //   color: secondaryColor,
+    //   animationDuration: const Duration(milliseconds: 200),
+    //   onTap: (index) {
+    //     // print(index);
+    //     switch (index) {
+    //       case 0:
+    //         Get.toNamed(RouteClass.getHomeRoute());
+    //         break;
+    //       case 1:
+    //         Get.toNamed(RouteClass.getCreateTicketRoute());
+    //         break;
+    //       case 2:
+    //         // Get.toNamed(RouteClass.getHomeRoute());
+    //         print('ke profile page');
+    //         break;
+    //     }
+    //   },
+    //   items: [
+    //     Icon(
+    //       Icons.home,
+    //       color: primaryColor,
+    //       size: 28,
     //     ),
-    //   ),
+    //     Icon(
+    //       Icons.add_rounded,
+    //       color: primaryColor,
+    //       size: 28,
+    //     ),
+    //     Icon(
+    //       Icons.person,
+    //       color: primaryColor,
+    //       size: 28,
+    //     ),
+    //   ],
     // );
   }
 }
