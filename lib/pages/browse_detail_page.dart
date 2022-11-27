@@ -27,7 +27,7 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
             ElevatedButton.icon(
                 style: TextButton.styleFrom(
                   foregroundColor: primaryColor,
-                  backgroundColor: secondaryColor,
+                  backgroundColor: greyColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -57,6 +57,7 @@ class TopCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 20,
+      color: secondaryColor,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -65,77 +66,82 @@ class TopCard extends StatelessWidget {
             Text("Ticket Number:",
                 style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: Colors.orangeAccent,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(Get.parameters['tickteNum'].toString(),
                 style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             Divider(
-              color: secondaryColor,
+              color: primaryColor,
               height: 30,
+              thickness: 1,
             ),
             Text("Status:",
                 style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(Get.parameters['tickteNum'].toString(),
                 style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             Divider(
-              color: secondaryColor,
+              color: primaryColor,
               height: 30,
+              thickness: 1,
             ),
             Text("Created Date:",
                 style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(Get.parameters['tickteNum'].toString(),
                 style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             Divider(
-              color: secondaryColor,
+              color: primaryColor,
               height: 30,
+              thickness: 1,
             ),
             Text("Request For:",
                 style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(Get.parameters['tickteNum'].toString(),
                 style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             Divider(
-              color: secondaryColor,
+              color: primaryColor,
               height: 30,
+              thickness: 1,
             ),
             Text("Created By:",
                 style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             Text(Get.parameters['tickteNum'].toString(),
                 style: GoogleFonts.inter(
                     fontSize: 12,
-                    color: secondaryColor,
+                    color: primaryColor,
                     fontWeight: FontWeight.bold)),
             Divider(
-              color: secondaryColor,
+              color: primaryColor,
               height: 30,
+              thickness: 1,
             ),
           ],
         ),
@@ -162,10 +168,10 @@ class BelowCard extends StatelessWidget {
               Icon(
                 Icons.circle,
                 size: 17,
-                color: secondaryColor,
+                color: blackColor,
               ),
               const SizedBox(width: 10),
-              Container(height: 400, width: 1, color: secondaryColor),
+              Container(height: 400, width: 1, color: blackColor),
             ],
           ),
           // card problem detail
@@ -177,13 +183,14 @@ class BelowCard extends StatelessWidget {
                 Text("Problem Detail",
                     style: GoogleFonts.inter(
                         fontSize: 18,
-                        color: secondaryColor,
+                        color: greyColor,
                         fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Card(
                     elevation: 10,
+                    color: secondaryColor,
                     child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: Column(
@@ -192,70 +199,74 @@ class BelowCard extends StatelessWidget {
                           Text("On Handled By",
                               style: GoogleFonts.inter(
                                   fontSize: 15,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
                           Text(Get.parameters['tickteNum'].toString(),
                               style: GoogleFonts.inter(
                                   fontSize: 12,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           Divider(
-                            color: secondaryColor,
+                            color: primaryColor,
                             height: 30,
                             indent: 5,
                             endIndent: 5,
+                            thickness: 1,
                           ),
                           Text("Description",
                               style: GoogleFonts.inter(
                                   fontSize: 15,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
                           Text(Get.parameters['tickteNum'].toString(),
                               style: GoogleFonts.inter(
                                   fontSize: 12,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           Divider(
-                            color: secondaryColor,
+                            color: primaryColor,
                             height: 30,
                             indent: 5,
                             endIndent: 5,
+                            thickness: 1,
                           ),
                           Text("Attachments",
                               style: GoogleFonts.inter(
                                   fontSize: 15,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
                           Text(Get.parameters['tickteNum'].toString(),
                               style: GoogleFonts.inter(
                                   fontSize: 12,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           Divider(
-                            color: secondaryColor,
+                            color: primaryColor,
                             height: 30,
                             indent: 5,
                             endIndent: 5,
+                            thickness: 1,
                           ),
                           Text("Messages/Comments",
                               style: GoogleFonts.inter(
                                   fontSize: 15,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
                           Text(Get.parameters['tickteNum'].toString(),
                               style: GoogleFonts.inter(
                                   fontSize: 12,
-                                  color: secondaryColor,
+                                  color: primaryColor,
                                   fontWeight: FontWeight.bold)),
                           Divider(
-                            color: secondaryColor,
+                            color: primaryColor,
                             height: 30,
                             indent: 5,
                             endIndent: 5,
+                            thickness: 1,
                           ),
                         ],
                       ),

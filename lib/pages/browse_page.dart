@@ -55,6 +55,7 @@ class _BrowsePageState extends State<BrowsePage> {
   Card buildCard(BrowseIssue issue) {
     return Card(
       elevation: 10,
+      color: secondaryColor,
       child: Column(
         children: [
           Padding(
@@ -71,7 +72,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Ticket Number",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -80,7 +81,7 @@ class _BrowsePageState extends State<BrowsePage> {
                           issue.ticketNum.toString(),
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: secondaryColor,
+                            color: primaryColor,
                           ),
                         ),
                       ),
@@ -88,7 +89,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Request For",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -99,7 +100,7 @@ class _BrowsePageState extends State<BrowsePage> {
                             issue.requestFor.toString(),
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: secondaryColor,
+                              color: primaryColor,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -110,7 +111,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Status",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -119,15 +120,15 @@ class _BrowsePageState extends State<BrowsePage> {
                           issue.status.toString(),
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: secondaryColor,
+                            color: primaryColor,
                           ),
                         ),
                       ),
                     ],
                   ),
                   VerticalDivider(
-                    thickness: 1,
-                    color: secondaryColor,
+                    thickness: 2,
+                    color: primaryColor,
                   ),
                   // COLUMN KANAN
                   Column(
@@ -137,7 +138,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Created Date",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -146,7 +147,7 @@ class _BrowsePageState extends State<BrowsePage> {
                           DateFormat.yMd().format(issue.createdDate),
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: secondaryColor,
+                            color: primaryColor,
                           ),
                         ),
                       ),
@@ -154,7 +155,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Created By",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -165,7 +166,7 @@ class _BrowsePageState extends State<BrowsePage> {
                             issue.createdBy.toString(),
                             style: GoogleFonts.inter(
                               fontSize: 12,
-                              color: secondaryColor,
+                              color: primaryColor,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -175,7 +176,7 @@ class _BrowsePageState extends State<BrowsePage> {
                         "Support Category",
                         style: GoogleFonts.inter(
                             fontSize: 15,
-                            color: secondaryColor,
+                            color: primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
@@ -184,7 +185,7 @@ class _BrowsePageState extends State<BrowsePage> {
                           issue.supportCategory.toString(),
                           style: GoogleFonts.inter(
                             fontSize: 12,
-                            color: secondaryColor,
+                            color: primaryColor,
                           ),
                         ),
                       ),
@@ -197,9 +198,7 @@ class _BrowsePageState extends State<BrowsePage> {
           Text(
             "Issue Desc",
             style: GoogleFonts.inter(
-                fontSize: 15,
-                color: secondaryColor,
-                fontWeight: FontWeight.bold),
+                fontSize: 15, color: primaryColor, fontWeight: FontWeight.bold),
           ),
           Container(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -207,7 +206,7 @@ class _BrowsePageState extends State<BrowsePage> {
               issue.issueDesc.toString(),
               style: GoogleFonts.inter(
                 fontSize: 12,
-                color: secondaryColor,
+                color: primaryColor,
               ),
               textAlign: TextAlign.center,
             ),

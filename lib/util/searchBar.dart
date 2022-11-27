@@ -28,30 +28,30 @@ class _SearchWidgetState extends State<SearchWidget> {
       margin: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: primaryColor,
       ),
       child: TextField(
         controller: controller,
-        style: GoogleFonts.inter(color: secondaryColor),
+        style: GoogleFonts.inter(color: blackColor),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: secondaryColor,
+              color: blackColor,
               width: 1.0,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: secondaryColor,
+              color: blackColor,
               width: 1.0,
             ),
           ),
           hintText: widget.hintText,
           hintStyle: GoogleFonts.inter(
-            color: secondaryColor,
+            color: blackColor,
             fontSize: 14,
           ),
           border: InputBorder.none,
