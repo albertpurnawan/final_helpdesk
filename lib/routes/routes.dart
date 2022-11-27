@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:helpdesk_skripsi/pages/browse_detail_page.dart';
+// import 'package:helpdesk_skripsi/pages/Detail_page.dart';
 import 'package:helpdesk_skripsi/pages/browse_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/create_ticket_page.dart';
 import 'package:helpdesk_skripsi/pages/dashboard_page.dart';
@@ -36,9 +37,6 @@ class RouteClass {
   static String getJoblistRoute() => joblist;
   static String getDetailRoute() => browsedetail;
 
-// kalo mau balik ke page sebelumnya di OnTap kasih Get.back()
-// kalo mau menuju page selanjutnya di OnTap kasih contoh:
-//         Get.toNamed(RouteClass.getCreateTicketRoute());
   static List<GetPage> routes = [
     GetPage(name: login, page: () => const LoginPage()),
     GetPage(name: dashboard, page: () => const DashboardPage()),

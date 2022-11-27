@@ -37,7 +37,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
           children: [
             TabBar(
               physics: const BouncingScrollPhysics(),
-              indicatorColor: secondaryColor,
+              indicatorColor: blackColor,
               isScrollable: true,
               tabs: [
                 Tab(
@@ -45,7 +45,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     "Support Category",
                     style: GoogleFonts.inter(
                       fontSize: 14,
-                      color: secondaryColor,
+                      color: blackColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -55,7 +55,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     "Category",
                     style: GoogleFonts.inter(
                       fontSize: 14,
-                      color: secondaryColor,
+                      color: blackColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -65,7 +65,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     "Sub Category 1",
                     style: GoogleFonts.inter(
                       fontSize: 14,
-                      color: secondaryColor,
+                      color: blackColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -75,7 +75,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     "Sub Category 2",
                     style: GoogleFonts.inter(
                       fontSize: 14,
-                      color: secondaryColor,
+                      color: blackColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -99,7 +99,7 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                   ),
                   ElevatedButton.icon(
                     style: TextButton.styleFrom(
-                      backgroundColor: secondaryColor,
+                      backgroundColor: blackColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
