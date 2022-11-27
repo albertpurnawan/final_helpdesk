@@ -13,19 +13,19 @@ class InputFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: GoogleFonts.inter(color: secondaryColor),
+      style: GoogleFonts.inter(color: blackColor),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: secondaryColor, width: 1.0),
+          borderSide: BorderSide(color: blackColor, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: secondaryColor, width: 1.0),
+          borderSide: BorderSide(color: blackColor, width: 1.0),
         ),
         hintText: hintText,
         hintStyle: GoogleFonts.inter(
-          color: secondaryColor,
+          color: blackColor,
           fontSize: 12,
         ),
       ),

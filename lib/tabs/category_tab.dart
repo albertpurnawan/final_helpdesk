@@ -57,7 +57,7 @@ class _CategoryTabState extends State<CategoryTab> {
           final item = _items[index];
           return Card(
             key: PageStorageKey(item['id']),
-            color: secondaryColor,
+            color: greyColor,
             elevation: 2,
             child: ExpansionTile(
               collapsedIconColor: primaryColor,

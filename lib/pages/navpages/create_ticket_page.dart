@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -87,7 +88,10 @@ class _CreateTicketState extends State<CreateTicket> {
                           color: secondaryColor,
                         ),
                       ),
-                      Divider(color: secondaryColor),
+                      Divider(
+                        color: secondaryColor,
+                        thickness: 2,
+                      ),
                       const SizedBox(height: 20),
                       const InputFieldWidget(hintText: "Request For *"),
                       const SizedBox(height: 20),
@@ -104,7 +108,7 @@ class _CreateTicketState extends State<CreateTicket> {
                         children: [
                           ElevatedButton.icon(
                             style: TextButton.styleFrom(
-                              backgroundColor: primaryColor,
+                              backgroundColor: greyColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -114,30 +118,40 @@ class _CreateTicketState extends State<CreateTicket> {
                             },
                             icon: Icon(
                               Icons.add,
-                              color: secondaryColor,
+                              color: primaryColor,
                             ),
                             label: Text(
                               "Add New File",
                               style: GoogleFonts.inter(
-                                color: secondaryColor,
+                                color: primaryColor,
                                 fontSize: 14,
                               ),
                             ),
                           ),
-                          TextButton(
+                          ElevatedButton(
                             style: TextButton.styleFrom(
                               backgroundColor: secondaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              AwesomeDialog(
+                                context: context,
+                                animType: AnimType.scale,
+                                headerAnimationLoop: true,
+                                dialogType: DialogType.success,
+                                title: 'Succes',
+                                desc: 'Successfully create ticket',
+                                btnOkOnPress: () {},
+                                btnOkIcon: Icons.check_circle,
+                              ).show();
+                            },
                             child: Text(
                               "Submit",
                               style: GoogleFonts.inter(
                                 color: primaryColor,
                                 fontSize: 14,
-                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -199,6 +213,7 @@ class _CreateTicketState extends State<CreateTicket> {
                         style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
+                          color: blackColor,
                         ),
                       ),
                     ],
