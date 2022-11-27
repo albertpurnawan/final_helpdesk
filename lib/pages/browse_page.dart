@@ -39,7 +39,8 @@ class _BrowsePageState extends State<BrowsePage> {
                   return GestureDetector(
                     child: buildCard(issue),
                     onTap: () {
-                      Get.toNamed('${RouteClass.detail}/${issue.ticketNum}');
+                      Get.toNamed(
+                          '${RouteClass.browsedetail}/${issue.ticketNum}');
                     },
                   );
                 },
@@ -48,8 +49,6 @@ class _BrowsePageState extends State<BrowsePage> {
           ),
         ],
       ),
-      // bottomNavigationBar: const BottomNavbar(),
-      // drawer: const MyDrawer(),
     );
   }
 
@@ -60,133 +59,139 @@ class _BrowsePageState extends State<BrowsePage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // COLUMN KIRI
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Ticket Number",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Text(
-                        issue.ticketNum.toString(),
+            child: IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // COLUMN KIRI
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ticket Number",
                         style: GoogleFonts.inter(
-                          fontSize: 12,
-                          color: secondaryColor,
-                        ),
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Text(
-                      "Request For",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: SizedBox(
-                        width: 130,
+                      Padding(
+                        padding: const EdgeInsets.all(5),
                         child: Text(
-                          issue.requestFor.toString(),
+                          issue.ticketNum.toString(),
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: secondaryColor,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                    Text(
-                      "Status",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Text(
-                        issue.status.toString(),
+                      Text(
+                        "Request For",
                         style: GoogleFonts.inter(
-                          fontSize: 12,
-                          color: secondaryColor,
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: SizedBox(
+                          width: 130,
+                          child: Text(
+                            issue.requestFor.toString(),
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: secondaryColor,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                // COLUMN KANAN
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Created Date",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Text(
-                        DateFormat.yMd().format(issue.createdDate),
+                      Text(
+                        "Status",
                         style: GoogleFonts.inter(
-                          fontSize: 12,
-                          color: secondaryColor,
-                        ),
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Text(
-                      "Created By",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: SizedBox(
-                        width: 130,
+                      Padding(
+                        padding: const EdgeInsets.all(5),
                         child: Text(
-                          issue.createdBy.toString(),
+                          issue.status.toString(),
                           style: GoogleFonts.inter(
                             fontSize: 12,
                             color: secondaryColor,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                    Text(
-                      "Support Category",
-                      style: GoogleFonts.inter(
-                          fontSize: 15,
-                          color: secondaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: Text(
-                        issue.supportCategory.toString(),
+                    ],
+                  ),
+                  VerticalDivider(
+                    thickness: 1,
+                    color: secondaryColor,
+                  ),
+                  // COLUMN KANAN
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Created Date",
                         style: GoogleFonts.inter(
-                          fontSize: 12,
-                          color: secondaryColor,
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          DateFormat.yMd().format(issue.createdDate),
+                          style: GoogleFonts.inter(
+                            fontSize: 12,
+                            color: secondaryColor,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        "Created By",
+                        style: GoogleFonts.inter(
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: SizedBox(
+                          width: 130,
+                          child: Text(
+                            issue.createdBy.toString(),
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: secondaryColor,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Support Category",
+                        style: GoogleFonts.inter(
+                            fontSize: 15,
+                            color: secondaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          issue.supportCategory.toString(),
+                          style: GoogleFonts.inter(
+                            fontSize: 12,
+                            color: secondaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           Text(
