@@ -95,7 +95,7 @@ class _BrowsePageState extends State<BrowsePage> {
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: SizedBox(
-                          width: 130,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(
                             issue.requestFor.toString(),
                             style: GoogleFonts.inter(
@@ -161,7 +161,7 @@ class _BrowsePageState extends State<BrowsePage> {
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: SizedBox(
-                          width: 130,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(
                             issue.createdBy.toString(),
                             style: GoogleFonts.inter(
@@ -195,20 +195,22 @@ class _BrowsePageState extends State<BrowsePage> {
               ),
             ),
           ),
+          // const SizedBox(height: 10),
           Text(
             "Issue Desc",
             style: GoogleFonts.inter(
                 fontSize: 15, color: primaryColor, fontWeight: FontWeight.bold),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 10),
             child: Text(
               issue.issueDesc.toString(),
               style: GoogleFonts.inter(
                 fontSize: 12,
                 color: primaryColor,
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
             ),
           ),
         ],
