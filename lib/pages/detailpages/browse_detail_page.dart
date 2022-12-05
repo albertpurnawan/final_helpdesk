@@ -66,9 +66,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                     const SizedBox(height: 10),
                     Text(Get.parameters['tickteNum'].toString(),
                         style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 12,
+                          color: primaryColor,
+                        )),
                     Divider(
                       color: primaryColor,
                       height: 30,
@@ -82,9 +82,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                     const SizedBox(height: 10),
                     Text(issueData[0].status,
                         style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 12,
+                          color: primaryColor,
+                        )),
                     Divider(
                       color: primaryColor,
                       height: 30,
@@ -98,9 +98,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                     const SizedBox(height: 10),
                     Text(DateFormat.yMd().format(issueData[0].createdDate),
                         style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 12,
+                          color: primaryColor,
+                        )),
                     Divider(
                       color: primaryColor,
                       height: 30,
@@ -114,9 +114,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                     const SizedBox(height: 10),
                     Text(issueData[0].requestFor,
                         style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 12,
+                          color: primaryColor,
+                        )),
                     Divider(
                       color: primaryColor,
                       height: 30,
@@ -130,9 +130,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                     const SizedBox(height: 10),
                     Text(issueData[1].createdBy,
                         style: GoogleFonts.inter(
-                            fontSize: 12,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 12,
+                          color: primaryColor,
+                        )),
                     Divider(
                       color: primaryColor,
                       height: 30,
@@ -194,9 +194,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                                   const SizedBox(height: 10),
                                   Text('--',
                                       style: GoogleFonts.inter(
-                                          fontSize: 12,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.bold)),
+                                        fontSize: 12,
+                                        color: primaryColor,
+                                      )),
                                   Divider(
                                     color: primaryColor,
                                     height: 30,
@@ -215,9 +215,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                                   Text(
                                     issueData[2].issueDesc,
                                     style: GoogleFonts.inter(
-                                        fontSize: 12,
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 12,
+                                      color: primaryColor,
+                                    ),
                                     textAlign: TextAlign.justify,
                                   ),
                                   Divider(
@@ -235,9 +235,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                                   const SizedBox(height: 10),
                                   Text(Get.parameters['tickteNum'].toString(),
                                       style: GoogleFonts.inter(
-                                          fontSize: 12,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.bold)),
+                                        fontSize: 12,
+                                        color: primaryColor,
+                                      )),
                                   Divider(
                                     color: primaryColor,
                                     height: 30,
@@ -253,9 +253,9 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                                   const SizedBox(height: 10),
                                   Text("--",
                                       style: GoogleFonts.inter(
-                                          fontSize: 12,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.bold)),
+                                        fontSize: 12,
+                                        color: primaryColor,
+                                      )),
                                   Divider(
                                     color: primaryColor,
                                     height: 30,
