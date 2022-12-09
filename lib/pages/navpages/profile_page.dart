@@ -116,54 +116,80 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        SizedBox(
-                          width: 140,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: ((context) {
-                                  return SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        ElevatedButton.icon(
-                                          onPressed: () {
-                                            pickFromCamera();
-                                            Get.back();
-                                          },
-                                          icon: const Icon(Icons.camera),
-                                          label:
-                                              const Text("Choose From Camera"),
+                        ElevatedButton(
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: ((context) {
+                                return SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton.icon(
+                                        onPressed: () {
+                                          pickFromCamera();
+                                          Get.back();
+                                        },
+                                        icon: Icon(
+                                          Icons.camera,
+                                          color: greyColor,
                                         ),
-                                        ElevatedButton.icon(
-                                          onPressed: () {
-                                            pickFromGallery();
-                                            Get.back();
-                                          },
-                                          icon: const Icon(Icons.photo),
-                                          label:
-                                              const Text("Choose From Gallery"),
-                                        )
-                                      ],
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-                            ),
-                            child: Text(
-                              "Change Photo",
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: secondaryColor,
-                              ),
+                                        label: Text(
+                                          "Choose From Camera",
+                                          style: GoogleFonts.inter(
+                                            fontSize: 14,
+                                            color: greyColor,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: primaryColor,
+                                          side: BorderSide(
+                                            color: greyColor,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                      ElevatedButton.icon(
+                                        onPressed: () {
+                                          pickFromGallery();
+                                          Get.back();
+                                        },
+                                        icon: Icon(
+                                          Icons.photo,
+                                          color: secondaryColor,
+                                        ),
+                                        label: Text(
+                                          "Choose From Gallery",
+                                          style: GoogleFonts.inter(
+                                            fontSize: 14,
+                                            color: secondaryColor,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: primaryColor,
+                                          side: BorderSide(
+                                            color: secondaryColor,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryColor,
+                          ),
+                          child: Text(
+                            "Change Photo",
+                            style: GoogleFonts.inter(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: secondaryColor,
                             ),
                           ),
                         ),
