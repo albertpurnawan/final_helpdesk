@@ -10,6 +10,7 @@ import 'package:helpdesk_skripsi/pages/login_page.dart';
 import 'package:helpdesk_skripsi/pages/master_category_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/main_page.dart';
 import 'package:helpdesk_skripsi/pages/report_page.dart';
+import 'package:helpdesk_skripsi/pages/review_joblist_page.dart';
 import 'package:helpdesk_skripsi/pages/show_status_page.dart';
 import 'package:helpdesk_skripsi/pages/ticket_pool_page.dart';
 
@@ -27,6 +28,7 @@ class RouteClass {
   static String browsedetail = "/browsedetail";
   static String historydetail = "/historydetail";
   static String showstatus = "/showstatus";
+  static String review = "/review";
 
   static String getLoginRoute() => login;
   static String getDashboardRoute() => dashboard;
@@ -67,5 +69,8 @@ class RouteClass {
     GetPage(
         name: '${RouteClass.historydetail}/:tickteNum',
         page: () => const HistoryDetailPage()),
+    GetPage(
+        name: '${RouteClass.review}/:tickteNum',
+        page: () => const ReviewJoblist()),
   ];
 }

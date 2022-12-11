@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/tabs/joblist_history_tab.dart';
+import 'package:helpdesk_skripsi/tabs/joblist_progress_tab.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 
 class JoblistPage extends StatelessWidget {
@@ -43,20 +44,21 @@ class JoblistPage extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
-                  Center(
-                    child: Text(
-                      "No record",
-                      style: GoogleFonts.inter(
-                        fontSize: 25,
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const JoblistHistory(),
+                  // Center(
+                  //   child: Text(
+                  //     "No record",
+                  //     style: GoogleFonts.inter(
+                  //       fontSize: 25,
+                  //       color: blackColor,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  JoblistProgress(),
+                  JoblistHistory(),
                 ],
               ),
             )
