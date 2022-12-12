@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helpdesk_skripsi/Model/browse_model.dart';
 import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
+import 'package:helpdesk_skripsi/routes/routes.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:intl/intl.dart';
@@ -43,8 +44,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                         size: 17,
                         color: secondaryColor,
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.7,
                           width: 1,
@@ -209,15 +209,14 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                         size: 17,
                         color: secondaryColor,
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.8,
                           width: 1,
                           color: secondaryColor),
                     ],
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -400,9 +399,9 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                         size: 17,
                         color: secondaryColor,
                       ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                     ],
                   ),
-                  const SizedBox(width: 10),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -412,7 +411,8 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                               fontSize: 17,
                               color: secondaryColor,
                               fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 10),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015),
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: Card(
@@ -664,14 +664,14 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                 textAlign: TextAlign.justify,
                                 TextSpan(
                                   text:
-                                      "You must done the task in your kanban before closing the ticket ",
+                                      "You must done the task in your kanban before closing the ticket. ",
                                   style: GoogleFonts.inter(
                                       fontSize: 15,
                                       color: primaryColor,
                                       fontWeight: FontWeight.bold),
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: "Go to You Kanban",
+                                      text: "Go to your Kanban",
                                       style: GoogleFonts.inter(
                                         fontSize: 15,
                                         color: primaryColor,
@@ -732,7 +732,9 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RouteClass.joblist);
+                      },
                       icon: const Icon(Icons.cancel_outlined),
                       label: Text('Cancel',
                           style: GoogleFonts.inter(
