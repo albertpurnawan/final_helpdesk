@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,8 @@ import 'package:helpdesk_skripsi/Model/browse_model.dart';
 import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ReviewJoblist extends StatefulWidget {
   const ReviewJoblist({super.key});
@@ -40,14 +43,15 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                         size: 17,
                         color: secondaryColor,
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.7,
                           width: 1,
                           color: secondaryColor),
                     ],
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +61,8 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                               fontSize: 17,
                               color: secondaryColor,
                               fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 10),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015),
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.8,
                           child: Card(
@@ -73,7 +78,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('Chris Anggawana',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -91,7 +99,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('MM04996',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -109,7 +120,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('IT',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -125,7 +139,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('[WL99] CNS - Region Sumatera',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -141,7 +158,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('--',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -157,7 +177,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('chris.anggawana@mayora.co.id',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -186,7 +209,8 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                         size: 17,
                         color: secondaryColor,
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.015),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.8,
                           width: 1,
@@ -219,7 +243,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text(ticketNum,
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -237,8 +264,13 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('MM04996',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text(
+                                      DateFormat.yMd()
+                                          .format(issueData[0].createdDate),
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -255,8 +287,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('IT',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text(issueData[0].issueDesc,
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -271,8 +306,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('[WL99] CNS - Region Sumatera',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text(issueData[0].supportCategory,
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -287,8 +325,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('--',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text(issueData[0].supportCategory,
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -303,7 +344,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   for (int i = 0; i < 2; i++)
                                     Card(
                                       elevation: 5,
@@ -384,8 +428,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text(ticketNum.toString(),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text('ACR - Check batch PBK',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -402,8 +449,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('MM04996',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text('Mayora Portal',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -420,8 +470,11 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('IT',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text('ERP - SAP',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -436,7 +489,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('IT',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -452,7 +508,10 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
                                   Text('IT',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
@@ -468,19 +527,30 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text('Internal',
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        color: primaryColor,
+                                      )),
                                   Divider(
                                     color: primaryColor,
                                     height: 30,
                                     thickness: 1,
                                   ),
-                                  Text("Sub Type",
+                                  Text("Support Type",
                                       style: GoogleFonts.inter(
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('IT',
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  Text('Remote',
                                       style: GoogleFonts.inter(
                                         fontSize: 12,
                                         color: primaryColor,
@@ -495,29 +565,179 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
-                                  Text('--',
-                                      style: GoogleFonts.inter(
-                                        fontSize: 12,
-                                        color: primaryColor,
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  TextField(
+                                      maxLines: 2,
+                                      style: TextStyle(color: primaryColor),
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: primaryColor,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: primaryColor,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        hintText: "Type your text",
+                                        hintStyle: GoogleFonts.inter(
+                                          color: primaryColor,
+                                          fontSize: 12,
+                                        ),
                                       )),
-                                  Divider(
-                                    color: primaryColor,
-                                    height: 30,
-                                    thickness: 1,
-                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.025),
                                   Text("Corrective Action",
                                       style: GoogleFonts.inter(
                                           fontSize: 15,
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
-                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.015),
+                                  TextField(
+                                      maxLines: 2,
+                                      style: TextStyle(color: primaryColor),
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: primaryColor,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide(
+                                            color: primaryColor,
+                                            width: 1.0,
+                                          ),
+                                        ),
+                                        hintText: "Type your text",
+                                        hintStyle: GoogleFonts.inter(
+                                          color: primaryColor,
+                                          fontSize: 12,
+                                        ),
+                                      ))
                                 ],
                               ),
                             ),
                           )),
                     ],
                   ),
+                ],
+              ),
+              Card(
+                elevation: 10,
+                color: secondaryColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        color: primaryColor,
+                        size: 15,
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text.rich(
+                                textAlign: TextAlign.justify,
+                                TextSpan(
+                                  text:
+                                      "You must done the task in your kanban before closing the ticket ",
+                                  style: GoogleFonts.inter(
+                                      fontSize: 15,
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.bold),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "Go to You Kanban",
+                                      style: GoogleFonts.inter(
+                                        fontSize: 15,
+                                        color: primaryColor,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          launchUrl(Uri.parse(
+                                              'https://portal.mayora.co.id/Portal/Dashboard/IT/Kanban'));
+                                        },
+                                    )
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton.icon(
+                      style: TextButton.styleFrom(
+                        foregroundColor: primaryColor,
+                        backgroundColor: blackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: null,
+                      icon: Icon(Icons.app_registration_rounded,
+                          color: primaryColor),
+                      label: Text('Close',
+                          style: GoogleFonts.inter(
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold))),
+                  ElevatedButton.icon(
+                      style: TextButton.styleFrom(
+                        foregroundColor: primaryColor,
+                        backgroundColor: blackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.restart_alt_sharp),
+                      label: Text('Return',
+                          style: GoogleFonts.inter(
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold))),
+                  ElevatedButton.icon(
+                      style: TextButton.styleFrom(
+                        foregroundColor: primaryColor,
+                        backgroundColor: blackColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.cancel_outlined),
+                      label: Text('Cancel',
+                          style: GoogleFonts.inter(
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold))),
                 ],
               )
             ],
