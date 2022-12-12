@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,9 +18,21 @@ class TicketPoolDetailPage extends StatefulWidget {
 
 class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
   List<TicketPool> issueData = allIssue;
-  String selectedValue = "Please Insert";
+  String? selectedValue;
   String ticketNum = Get.parameters['tickteNum'].toString();
+  final List<String> comunicationBy = [
+    'Mayora Portal1',
+    'Mayora Portal2',
+    'Mayora Portal3'
+  ];
 
+  final List<String> supportCategory = [
+    'Technical Problem1',
+    'Technical Problem2',
+    'Technical Problem3'
+  ];
+
+  final List<String> category = ['Services1', 'Services2', 'Services3'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +191,7 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
             const SizedBox(height: 30),
             // Bottom Card
             Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -234,9 +247,9 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                         Text(
                                           issueData[0].issueDesc,
                                           style: GoogleFonts.inter(
-                                              fontSize: 12,
-                                              color: primaryColor,
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: 12,
+                                            color: primaryColor,
+                                          ),
                                           textAlign: TextAlign.justify,
                                         ),
                                         Divider(
@@ -312,23 +325,27 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                         color: greyColor,
                                         fontWeight: FontWeight.bold)),
                                 const SizedBox(height: 10),
-                                DropdownButton(
+                                CustomDropdownButton2(
+                                  hint: 'Select Communication By',
+                                  buttonWidth:
+                                      MediaQuery.of(context).size.width * 1,
+                                  dropdownWidth:
+                                      MediaQuery.of(context).size.width * 1,
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    size: 24,
+                                  ),
                                   value: selectedValue,
+                                  dropdownItems: comunicationBy,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedValue = value.toString();
+                                      selectedValue = value!;
                                     });
                                   },
-                                  items: issueData[0]
-                                      .comunicationBy
-                                      .map((itemone) {
-                                    return DropdownMenuItem(
-                                        value: itemone, child: Text(itemone));
-                                  }).toList(),
-                                )
+                                ),
                               ]),
 
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 20),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -343,10 +360,8 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                   style:
                                       GoogleFonts.inter(color: secondaryColor),
                                   decoration: const InputDecoration(
-                                      hintText: "Enter your email",
-                                      labelText: "Email",
-                                      labelStyle:
-                                          TextStyle(color: Color(0xFF424242))),
+                                    hintText: "Enter Support Category",
+                                  ),
                                 ),
                               ]),
 
@@ -365,10 +380,8 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                   style:
                                       GoogleFonts.inter(color: secondaryColor),
                                   decoration: const InputDecoration(
-                                      hintText: "Enter your email",
-                                      labelText: "Email",
-                                      labelStyle:
-                                          TextStyle(color: Color(0xFF424242))),
+                                    hintText: "Enter Category",
+                                  ),
                                 ),
                               ]),
 
@@ -382,15 +395,14 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                         color: greyColor,
                                         fontWeight: FontWeight.bold)),
                                 const SizedBox(height: 10),
-                                TextFormField(
-                                  obscureText: true,
+                                TextField(
+                                  maxLines: 8,
+                                  keyboardType: TextInputType.multiline,
                                   style:
                                       GoogleFonts.inter(color: secondaryColor),
                                   decoration: const InputDecoration(
-                                      hintText: "Enter your email",
-                                      labelText: "Email",
-                                      labelStyle:
-                                          TextStyle(color: Color(0xFF424242))),
+                                    hintText: "Enter Notes",
+                                  ),
                                 ),
                               ]),
 

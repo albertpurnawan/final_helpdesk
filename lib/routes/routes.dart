@@ -12,7 +12,7 @@ import 'package:helpdesk_skripsi/pages/navpages/main_page.dart';
 import 'package:helpdesk_skripsi/pages/report_page.dart';
 import 'package:helpdesk_skripsi/pages/review_joblist_page.dart';
 import 'package:helpdesk_skripsi/pages/show_status_page.dart';
-import 'package:helpdesk_skripsi/pages/ticket_pool_detail.dart';
+import 'package:helpdesk_skripsi/pages/detailpages/ticket_pool_detail.dart';
 import 'package:helpdesk_skripsi/pages/ticket_pool_page.dart';
 
 class RouteClass {
