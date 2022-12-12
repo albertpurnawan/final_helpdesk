@@ -233,11 +233,40 @@ class _BrowseDetailPageState extends State<BrowsesDetailPage> {
                                           color: primaryColor,
                                           fontWeight: FontWeight.bold)),
                                   const SizedBox(height: 10),
-                                  Text(Get.parameters['tickteNum'].toString(),
-                                      style: GoogleFonts.inter(
-                                        fontSize: 12,
-                                        color: primaryColor,
-                                      )),
+                                  for (int i = 0; i < 1; i++)
+                                    Card(
+                                      elevation: 5,
+                                      color: primaryColor,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (context) => AlertDialog(
+                                                    title: Text(
+                                                        issueData[1].createdBy,
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 14,
+                                                                color:
+                                                                    blackColor,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold)),
+                                                    content: Image.asset(
+                                                        "assets/images/iuProfile.jpg"),
+                                                  ));
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Text(issueData[1].createdBy,
+                                              style: GoogleFonts.inter(
+                                                  fontSize: 12,
+                                                  color: secondaryColor,
+                                                  decoration: TextDecoration
+                                                      .underline)),
+                                        ),
+                                      ),
+                                    ),
                                   Divider(
                                     color: primaryColor,
                                     height: 30,
