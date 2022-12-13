@@ -134,13 +134,13 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                         tabItems[current],
                         style: GoogleFonts.inter(
                           fontSize: 20,
-                          color: blackColor,
+                          color: secondaryColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       ElevatedButton.icon(
                         style: TextButton.styleFrom(
-                          backgroundColor: blackColor,
+                          backgroundColor: secondaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -232,8 +232,8 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     visible: isVisible1,
                     child: CustomDropdownButton2(
                       hint: 'Support Category *',
-                      buttonWidth: MediaQuery.of(context).size.width * 0.7,
-                      dropdownWidth: MediaQuery.of(context).size.width * 0.7,
+                      buttonWidth: MediaQuery.of(context).size.width,
+                      dropdownWidth: MediaQuery.of(context).size.width * 0.9,
                       icon: const Icon(
                         Icons.arrow_drop_down,
                         size: 24,
@@ -252,8 +252,8 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     visible: isVisible2,
                     child: CustomDropdownButton2(
                       hint: 'Category *',
-                      buttonWidth: MediaQuery.of(context).size.width * 0.7,
-                      dropdownWidth: MediaQuery.of(context).size.width * 0.7,
+                      buttonWidth: MediaQuery.of(context).size.width,
+                      dropdownWidth: MediaQuery.of(context).size.width * 0.9,
                       icon: const Icon(
                         Icons.arrow_drop_down,
                         size: 24,
@@ -272,8 +272,8 @@ class _MasterCategoryPageState extends State<MasterCategoryPage> {
                     visible: isVisible3,
                     child: CustomDropdownButton2(
                       hint: 'Sub Category 1 *',
-                      buttonWidth: MediaQuery.of(context).size.width * 0.7,
-                      dropdownWidth: MediaQuery.of(context).size.width * 0.7,
+                      buttonWidth: MediaQuery.of(context).size.width,
+                      dropdownWidth: MediaQuery.of(context).size.width * 0.9,
                       icon: const Icon(
                         Icons.arrow_drop_down,
                         size: 24,

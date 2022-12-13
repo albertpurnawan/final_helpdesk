@@ -34,9 +34,10 @@ class _JoblistProgressState extends State<JoblistProgress> {
                 title: Text(
                   issue.issueDesc.toString(),
                   style: GoogleFonts.inter(
-                      fontSize: 12,
-                      color: primaryColor,
-                      decoration: TextDecoration.underline),
+                    fontSize: 12,
+                    color: primaryColor,
+                    // decoration: TextDecoration.underline,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -48,36 +49,44 @@ class _JoblistProgressState extends State<JoblistProgress> {
                         width: MediaQuery.of(context).size.width * 0.2,
                       ),
                       ElevatedButton.icon(
-                          style: TextButton.styleFrom(
-                            foregroundColor: primaryColor,
-                            backgroundColor: blackColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        style: TextButton.styleFrom(
+                          foregroundColor: primaryColor,
+                          backgroundColor: orangeColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          onPressed: () {
-                            Get.toNamed(
-                                '${RouteClass.review}/${issue.ticketNum}');
-                          },
-                          icon: const Icon(Icons.app_registration_rounded),
-                          label: Text('Review',
-                              style: GoogleFonts.inter(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold))),
+                        ),
+                        onPressed: () {
+                          Get.toNamed(
+                              '${RouteClass.review}/${issue.ticketNum}');
+                        },
+                        icon: const Icon(Icons.app_registration_rounded),
+                        label: Text(
+                          'Review',
+                          style: GoogleFonts.inter(
+                            color: primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                       ElevatedButton.icon(
-                          style: TextButton.styleFrom(
-                            foregroundColor: primaryColor,
-                            backgroundColor: blackColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        style: TextButton.styleFrom(
+                          foregroundColor: primaryColor,
+                          backgroundColor: secondaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          onPressed: () {},
-                          icon: const Icon(Icons.restart_alt_sharp),
-                          label: Text('Return',
-                              style: GoogleFonts.inter(
-                                  color: primaryColor,
-                                  fontWeight: FontWeight.bold))),
+                        ),
+                        onPressed: () {},
+                        icon: const Icon(Icons.restart_alt_sharp),
+                        label: Text(
+                          'Return',
+                          style: GoogleFonts.inter(
+                            color: primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   )
                 ],

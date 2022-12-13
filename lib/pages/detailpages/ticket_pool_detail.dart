@@ -328,9 +328,9 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
                                 CustomDropdownButton2(
                                   hint: 'Select Communication By',
                                   buttonWidth:
-                                      MediaQuery.of(context).size.width * 1,
+                                      MediaQuery.of(context).size.width,
                                   dropdownWidth:
-                                      MediaQuery.of(context).size.width * 1,
+                                      MediaQuery.of(context).size.width * 0.8,
                                   icon: const Icon(
                                     Icons.arrow_drop_down,
                                     size: 24,
@@ -347,64 +347,74 @@ class _TicketPoolDetailPageState extends State<TicketPoolDetailPage> {
 
                           const SizedBox(height: 20),
                           Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Support Category *",
-                                    style: GoogleFonts.inter(
-                                        fontSize: 18,
-                                        color: greyColor,
-                                        fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 10),
-                                TextFormField(
-                                  obscureText: true,
-                                  style:
-                                      GoogleFonts.inter(color: secondaryColor),
-                                  decoration: const InputDecoration(
-                                    hintText: "Enter Support Category",
-                                  ),
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Support Category *",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    color: greyColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                style: GoogleFonts.inter(color: blackColor),
+                                decoration: const InputDecoration(
+                                  hintText: "Enter Support Category",
                                 ),
-                              ]),
+                              ),
+                            ],
+                          ),
 
                           const SizedBox(height: 10),
                           Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Category *",
-                                    style: GoogleFonts.inter(
-                                        fontSize: 18,
-                                        color: greyColor,
-                                        fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 10),
-                                TextFormField(
-                                  obscureText: true,
-                                  style:
-                                      GoogleFonts.inter(color: secondaryColor),
-                                  decoration: const InputDecoration(
-                                    hintText: "Enter Category",
-                                  ),
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Category *",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    color: greyColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                style: GoogleFonts.inter(color: blackColor),
+                                decoration: const InputDecoration(
+                                  hintText: "Enter Category",
                                 ),
-                              ]),
+                              ),
+                            ],
+                          ),
 
                           const SizedBox(height: 10),
                           Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Notes *",
-                                    style: GoogleFonts.inter(
-                                        fontSize: 18,
-                                        color: greyColor,
-                                        fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 10),
-                                TextField(
-                                  maxLines: 8,
-                                  keyboardType: TextInputType.multiline,
-                                  style:
-                                      GoogleFonts.inter(color: secondaryColor),
-                                  decoration: const InputDecoration(
-                                    hintText: "Enter Notes",
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Notes *",
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    color: greyColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                maxLines: 8,
+                                keyboardType: TextInputType.multiline,
+                                style: GoogleFonts.inter(color: blackColor),
+                                decoration: const InputDecoration(
+                                  hintText: "Enter Notes",
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 0.5),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 0.5),
                                   ),
                                 ),
-                              ]),
+                              ),
+                            ],
+                          ),
 
                           const SizedBox(height: 20),
                         ],

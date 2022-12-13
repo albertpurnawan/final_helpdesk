@@ -33,9 +33,10 @@ class _JoblistHistory extends State<JoblistHistory> {
                   child: Text(
                     issue.issueDesc.toString(),
                     style: GoogleFonts.inter(
-                        fontSize: 12,
-                        color: primaryColor,
-                        decoration: TextDecoration.underline),
+                      fontSize: 12,
+                      color: primaryColor,
+                      // decoration: TextDecoration.underline,
+                    ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),

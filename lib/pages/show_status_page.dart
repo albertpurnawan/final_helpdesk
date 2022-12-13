@@ -35,7 +35,7 @@ class _ShowStatusState extends State<ShowStatus> {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: secondaryColor,
+                    color: greyColor,
                     size: 17,
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.05),
@@ -47,7 +47,7 @@ class _ShowStatusState extends State<ShowStatus> {
                         Text("Review Helpdesk",
                             style: GoogleFonts.inter(
                                 fontSize: 17,
-                                color: secondaryColor,
+                                color: greyColor,
                                 fontWeight: FontWeight.bold)),
                         Card(
                           elevation: 10,
@@ -101,7 +101,7 @@ class _ShowStatusState extends State<ShowStatus> {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: secondaryColor,
+                    color: greyColor,
                     size: 17,
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.05),
@@ -113,7 +113,7 @@ class _ShowStatusState extends State<ShowStatus> {
                         Text("Superior IT Application Problem Assign Ticket",
                             style: GoogleFonts.inter(
                                 fontSize: 17,
-                                color: secondaryColor,
+                                color: greyColor,
                                 fontWeight: FontWeight.bold)),
                         Card(
                           elevation: 10,
@@ -167,7 +167,7 @@ class _ShowStatusState extends State<ShowStatus> {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: secondaryColor,
+                    color: greyColor,
                     size: 17,
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.05),
@@ -179,7 +179,7 @@ class _ShowStatusState extends State<ShowStatus> {
                         Text("Review Ticket By IT",
                             style: GoogleFonts.inter(
                                 fontSize: 17,
-                                color: secondaryColor,
+                                color: greyColor,
                                 fontWeight: FontWeight.bold)),
                         Card(
                           elevation: 10,
@@ -233,7 +233,7 @@ class _ShowStatusState extends State<ShowStatus> {
                 children: [
                   Icon(
                     Icons.circle,
-                    color: secondaryColor,
+                    color: greyColor,
                     size: 17,
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.05),
@@ -245,7 +245,7 @@ class _ShowStatusState extends State<ShowStatus> {
                         Text("Review Issue by Creator",
                             style: GoogleFonts.inter(
                                 fontSize: 17,
-                                color: secondaryColor,
+                                color: greyColor,
                                 fontWeight: FontWeight.bold)),
                         Card(
                           elevation: 10,

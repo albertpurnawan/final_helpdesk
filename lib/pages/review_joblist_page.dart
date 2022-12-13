@@ -42,13 +42,13 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Icon(
                         Icons.circle,
                         size: 17,
-                        color: secondaryColor,
+                        color: greyColor,
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.7,
                           width: 1,
-                          color: secondaryColor),
+                          color: greyColor),
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.015),
@@ -59,7 +59,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Text("User Detail",
                           style: GoogleFonts.inter(
                               fontSize: 17,
-                              color: secondaryColor,
+                              color: greyColor,
                               fontWeight: FontWeight.bold)),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.015),
@@ -207,13 +207,13 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Icon(
                         Icons.circle,
                         size: 17,
-                        color: secondaryColor,
+                        color: greyColor,
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                       Container(
                           height: MediaQuery.of(context).size.height * 0.8,
                           width: 1,
-                          color: secondaryColor),
+                          color: greyColor),
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.015),
@@ -224,7 +224,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Text("Problem Detail",
                           style: GoogleFonts.inter(
                               fontSize: 17,
-                              color: secondaryColor,
+                              color: greyColor,
                               fontWeight: FontWeight.bold)),
                       const SizedBox(height: 10),
                       SizedBox(
@@ -397,7 +397,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Icon(
                         Icons.circle,
                         size: 17,
-                        color: secondaryColor,
+                        color: greyColor,
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                     ],
@@ -409,7 +409,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                       Text("Support Detail",
                           style: GoogleFonts.inter(
                               fontSize: 17,
-                              color: secondaryColor,
+                              color: greyColor,
                               fontWeight: FontWeight.bold)),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.015),
@@ -642,63 +642,64 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                   ),
                 ],
               ),
-              Card(
-                elevation: 10,
-                color: secondaryColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.info_outline,
-                        color: primaryColor,
-                        size: 15,
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text.rich(
-                                textAlign: TextAlign.justify,
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(
+                      Icons.info_outline,
+                      color: greyColor,
+                      size: 24,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            textAlign: TextAlign.justify,
+                            TextSpan(
+                              text:
+                                  "You must done the task in your kanban before closing the ticket. ",
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: greyColor,
+                              ),
+                              children: [
                                 TextSpan(
-                                  text:
-                                      "You must done the task in your kanban before closing the ticket. ",
+                                  text: "Go to your Kanban",
                                   style: GoogleFonts.inter(
-                                      fontSize: 15,
-                                      color: primaryColor,
-                                      fontWeight: FontWeight.bold),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: "Go to your Kanban",
-                                      style: GoogleFonts.inter(
-                                        fontSize: 15,
-                                        color: primaryColor,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          launchUrl(Uri.parse(
-                                              'https://portal.mayora.co.id/Portal/Dashboard/IT/Kanban'));
-                                        },
-                                    )
-                                  ],
-                                )),
-                          ],
-                        ),
+                                    fontSize: 15,
+                                    color: greyColor,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      launchUrl(
+                                        Uri.parse(
+                                            'https://portal.mayora.co.id/Portal/Dashboard/IT/Kanban'),
+                                      );
+                                    },
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton.icon(
                       style: TextButton.styleFrom(
                         foregroundColor: primaryColor,
-                        backgroundColor: blackColor,
+                        backgroundColor: toscaColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -713,7 +714,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                   ElevatedButton.icon(
                       style: TextButton.styleFrom(
                         foregroundColor: primaryColor,
-                        backgroundColor: blackColor,
+                        backgroundColor: orangeColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -727,7 +728,7 @@ class _ReviewJoblistState extends State<ReviewJoblist> {
                   ElevatedButton.icon(
                       style: TextButton.styleFrom(
                         foregroundColor: primaryColor,
-                        backgroundColor: blackColor,
+                        backgroundColor: secondaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
