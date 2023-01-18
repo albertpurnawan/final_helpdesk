@@ -44,21 +44,21 @@ class JoblistPage extends StatelessWidget {
                 ),
               ],
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 children: [
-                  // Center(
-                  //   child: Text(
-                  //     "No record",
-                  //     style: GoogleFonts.inter(
-                  //       fontSize: 25,
-                  //       color: blackColor,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
-                  JoblistProgress(),
-                  JoblistHistory(),
+                  Center(
+                    child: Text(
+                      "No record",
+                      style: GoogleFonts.inter(
+                        fontSize: 25,
+                        color: blackColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  // JoblistProgress(),
+                  // JoblistHistory(),
                 ],
               ),
             )

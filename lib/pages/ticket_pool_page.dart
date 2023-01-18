@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:helpdesk_skripsi/data/ticket_pool_data.dart';
+import 'package:helpdesk_skripsi/data/ticketpool_data.dart';
 import 'package:helpdesk_skripsi/model/ticket_pool_model.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/searchBar.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 
 import '../routes/routes.dart';
 
@@ -18,8 +21,71 @@ class TicketPoolPage extends StatefulWidget {
 }
 
 class _TicketPoolPageState extends State<TicketPoolPage> {
-  List<TicketPool> issueData = allIssue;
-  String query = '';
+  bool loading = true;
+  String search = '';
+  String token = Get.parameters['token'].toString();
+  List<TicketPoolModel> dataHelp = [];
+  List<TicketPoolModel> dataClose = [];
+  List<TicketPoolModel> dataSupp = [];
+  List<TicketPoolModel> dataCurr = [];
+  Timer? debouncer;
+  int current = 0;
+  bool isVisible1 = false;
+  bool isVisible2 = false;
+  bool isVisible3 = false;
+  String? selectedValue1;
+  String? selectedValue2;
+  String? selectedValue3;
+
+  @override
+  void initState() {
+    super.initState();
+    loading = true;
+
+    init();
+  }
+
+  @override
+  void dispose() {
+    debouncer?.cancel();
+    super.dispose();
+  }
+
+  void debounce(
+    VoidCallback callBack, {
+    Duration duration = const Duration(milliseconds: 1000),
+  }) {
+    if (debouncer != null) {
+      debouncer!.cancel();
+    }
+    debouncer = Timer(duration, callBack);
+  }
+
+  void dataLoaded() {
+    setState(() {
+      loading = false;
+    });
+  }
+
+  Future init() async => debounce(() async {
+        final dataHelp = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_NEW');
+        final dataClose = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_CLOSE');
+        final dataSupp = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_OPEN');
+        print(dataHelp.length);
+        print(dataClose.length);
+        print(dataSupp.length);
+        if (!mounted) return;
+        setState(() {
+          this.dataHelp = dataHelp;
+          this.dataClose = dataClose;
+          this.dataSupp = dataSupp;
+          dataCurr = dataHelp;
+          loading = false;
+        });
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -29,105 +95,136 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
           appBar: const MyAppBar(title: 'Ticket Pool', showBackBtn: true),
           backgroundColor: primaryColor,
           body: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TabBar(
-                physics: const BouncingScrollPhysics(),
-                indicatorColor: blackColor,
-                isScrollable: true,
-                tabs: [
-                  Tab(
-                    child: Text(
-                      "Ticket Open Helpdesk",
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
+              Column(children: <Widget>[
+                TabBar(
+                  physics: const NeverScrollableScrollPhysics(),
+                  indicatorColor: blackColor,
+                  isScrollable: true,
+                  onTap: (int index) {
+                    current = index;
+                    setState(() {
+                      if (current == 0) {
+                        isVisible1 = true;
+                        isVisible2 = false;
+                        isVisible3 = false;
+                        dataCurr = dataHelp;
+                      } else if (current == 1) {
+                        isVisible1 = true;
+                        isVisible2 = true;
+                        isVisible3 = false;
+                        setState(() {
+                          dataCurr = dataSupp;
+                        });
+                      } else if (current == 2) {
+                        isVisible1 = true;
+                        isVisible2 = true;
+                        isVisible3 = true;
+                        setState(() {
+                          dataCurr = dataClose;
+                        });
+                      }
+                    });
+                    print("index is $current");
+                  },
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        "Ticket Open Helpdesk",
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          color: blackColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Text(
-                      "Ticket Open PIC Support",
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
+                    Tab(
+                      child: Text(
+                        "Ticket Open PIC Support",
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          color: blackColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Text(
-                      "Close",
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
+                    Tab(
+                      child: Text(
+                        "Close",
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          color: blackColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ]),
               buildSearch(),
-              Expanded(
-                  child: TabBarView(
-                      physics: const BouncingScrollPhysics(),
-                      children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: ListView.builder(
-                        itemCount: issueData.length,
-                        itemBuilder: (context, index) {
-                          final issue = issueData[index];
-                          return GestureDetector(
-                            child: buildCard(issue),
-                            onTap: () {
-                              Get.toNamed(
-                                  '${RouteClass.ticketpooldetail}/${issue.ticketNum}');
-                            },
-                          );
-                        },
+              if (loading) loadingImage(),
+              if (!loading)
+                Expanded(
+                    child: TabBarView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: ListView.builder(
+                          itemCount: dataCurr.length,
+                          itemBuilder: (context, index) {
+                            final issue = dataCurr[index];
+                            return GestureDetector(
+                              child: buildCard(issue),
+                              onTap: () {
+                                Get.toNamed(
+                                    '${RouteClass.ticketpooldetail}/${issue.id}');
+                              },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: ListView.builder(
-                        itemCount: issueData.length,
-                        itemBuilder: (context, index) {
-                          final issue = issueData[index];
-                          return GestureDetector(
-                            child: buildCard(issue),
-                            onTap: () {
-                              Get.toNamed(
-                                  '${RouteClass.ticketpooldetail}/${issue.ticketNum}');
-                            },
-                          );
-                        },
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: ListView.builder(
+                          itemCount: dataCurr.length,
+                          itemBuilder: (context, index) {
+                            final issue = dataCurr[index];
+
+                            return GestureDetector(
+                              child: buildCard(issue),
+                              onTap: () {
+                                Get.toNamed(
+                                    '${RouteClass.ticketpooldetail}/${issue.id}');
+                              },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: ListView.builder(
-                        itemCount: issueData.length,
-                        itemBuilder: (context, index) {
-                          final issue = issueData[index];
-                          return GestureDetector(
-                            child: buildCard(issue),
-                            onTap: () {
-                              Get.toNamed(
-                                  '${RouteClass.ticketpooldetail}/${issue.ticketNum}');
-                            },
-                          );
-                        },
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: ListView.builder(
+                          itemCount: dataCurr.length,
+                          itemBuilder: (context, index) {
+                            final issue = dataCurr[index];
+                            return GestureDetector(
+                              child: buildCard(issue),
+                              onTap: () {
+                                Get.toNamed(
+                                    '${RouteClass.ticketpooldetail}/${issue.id}');
+                              },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ])),
+                    ])),
             ],
           ),
         ));
   }
 
-  Card buildCard(TicketPool issue) {
+  Card buildCard(TicketPoolModel issue) {
     return Card(
       elevation: 10,
       color: secondaryColor,
@@ -155,7 +252,7 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(
-                            issue.ticketNum.toString(),
+                            issue.docno.toString(),
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: primaryColor,
@@ -166,7 +263,7 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
                         ),
                       ),
                       Text(
-                        "Status",
+                        "Description",
                         style: GoogleFonts.inter(
                             fontSize: 15,
                             color: primaryColor,
@@ -177,85 +274,12 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(
-                            issue.status.toString(),
+                            issue.description.toString(),
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: primaryColor,
                             ),
                             maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Requester",
-                        style: GoogleFonts.inter(
-                            fontSize: 15,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Text(
-                            issue.requester.toString(),
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              color: primaryColor,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  VerticalDivider(
-                    thickness: 2,
-                    color: primaryColor,
-                  ),
-                  // COLUMN KANAN
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Requester Email",
-                        style: GoogleFonts.inter(
-                            fontSize: 15,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Text(
-                            issue.requesterEmail.toString(),
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              color: primaryColor,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Created Date",
-                        style: GoogleFonts.inter(
-                            fontSize: 15,
-                            color: primaryColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: Text(
-                            DateFormat.yMd().format(issue.createdDate),
-                            style: GoogleFonts.inter(
-                              fontSize: 12,
-                              color: primaryColor,
-                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -272,7 +296,7 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.3,
                           child: Text(
-                            issue.createdBy.toString(),
+                            '${issue.createby} - ${issue.createbyname}',
                             style: GoogleFonts.inter(
                               fontSize: 12,
                               color: primaryColor,
@@ -281,6 +305,156 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
                           ),
                         ),
                       ),
+                      if (current == 2)
+                        Text(
+                          "Closed Date",
+                          style: GoogleFonts.inter(
+                              fontSize: 15,
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      if (current == 2)
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              issue.closeticketdate,
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                color: primaryColor,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  VerticalDivider(
+                    thickness: 2,
+                    color: primaryColor,
+                  ),
+                  // COLUMN KANAN
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Created Date",
+                        style: GoogleFonts.inter(
+                            fontSize: 15,
+                            color: primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: Text(
+                            issue.createdate,
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: primaryColor,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Request For",
+                        style: GoogleFonts.inter(
+                            fontSize: 15,
+                            color: primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: Text(
+                            '${issue.userid} - ${issue.username}',
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: primaryColor,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Support Category",
+                        style: GoogleFonts.inter(
+                            fontSize: 15,
+                            color: primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      if (issue.supportcategory.toString() == 'null')
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              '',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                color: primaryColor,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      if (issue.supportcategory.toString() != 'null')
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              issue.supportcategory.toString(),
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                color: primaryColor,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      if (current == 2)
+                        Text(
+                          "Status",
+                          style: GoogleFonts.inter(
+                              fontSize: 15,
+                              color: primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      if (current == 2)
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (issue.status.toString() == 'O')
+                                  Text(
+                                    'OPEN',
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      color: primaryColor,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                if (issue.status.toString() == 'C')
+                                  Text(
+                                    'CLOSE',
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      color: primaryColor,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ],
@@ -288,53 +462,94 @@ class _TicketPoolPageState extends State<TicketPoolPage> {
             ),
           ),
           // const SizedBox(height: 10),
-          Text(
-            "Requester's Phone Number",
-            style: GoogleFonts.inter(
-                fontSize: 15, color: primaryColor, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            padding:
-                const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 10),
-            child: Text(
-              issue.requesterPhoneNum.toString(),
+          if (current == 2)
+            Text(
+              "Rate",
               style: GoogleFonts.inter(
-                fontSize: 12,
-                color: primaryColor,
-              ),
-              textAlign: TextAlign.justify,
+                  fontSize: 15,
+                  color: primaryColor,
+                  fontWeight: FontWeight.bold),
             ),
-          ),
+          if (current == 2)
+            Container(
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, bottom: 20, top: 10),
+              child: Column(
+                children: [
+                  if (issue.rate.toString() == 'null')
+                    Text(
+                      'Not rated',
+                      style: GoogleFonts.inter(
+                        fontSize: 12,
+                        color: primaryColor,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  if (issue.rate.toString() != 'null')
+                    Text(
+                      issue.rate.toString(),
+                      style: GoogleFonts.inter(
+                        fontSize: 12,
+                        color: primaryColor,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                ],
+              ),
+            ),
         ],
       ),
     );
   }
 
   Widget buildSearch() => SearchWidget(
-        text: query,
+        text: search,
         hintText: 'Search...',
-        onChanged: searchIssue,
+        onChanged: searchData,
       );
 
-  void searchIssue(String query) {
-    final tickets = allIssue.where((issue) {
-      final ticketNum = issue.ticketNum.toString().toLowerCase();
-      final createdBy = issue.createdBy.toLowerCase();
-      final requester = issue.requester.toLowerCase();
-      final requesterEmail = issue.requesterEmail.toLowerCase();
-      final requesterPhoneNum = issue.requesterPhoneNum.toLowerCase();
-      final searchLower = query.toLowerCase();
+  Future searchData(String search) async => debounce(() async {
+        print(search);
+        print(current);
+        setState(() {
+          loading = true;
+        });
+        final dataHelp = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_NEW');
+        final dataSupp = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_OPEN');
+        final dataClose = await getTicketPool.ticket(
+            context: context, token: token, search: search, category: '_CLOSE');
+        if (!mounted) return;
+        setState(() {
+          this.search = search;
+          this.dataHelp = dataHelp;
+          this.dataSupp = dataSupp;
+          this.dataClose = dataClose;
+          if (current == 0) {
+            dataCurr = dataHelp;
+          } else if (current == 1) {
+            dataCurr = dataSupp;
+          } else if (current == 2) {
+            dataCurr = dataClose;
+          }
+          loading = false;
+        });
+      });
 
-      return ticketNum.contains(searchLower) ||
-          createdBy.contains(searchLower) ||
-          requester.contains(searchLower) ||
-          requesterEmail.contains(searchLower) ||
-          requesterPhoneNum.contains(searchLower);
-    }).toList();
-
-    setState(() {
-      this.query = query;
-      issueData = tickets;
-    });
+  Widget loadingImage() {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.7,
+      width: MediaQuery.of(context).size.width * 1,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Lottie.asset("assets/lottie/loading.json"),
+          ),
+        ],
+      ),
+    );
   }
 }

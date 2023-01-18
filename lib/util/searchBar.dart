@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/model/browse_model.dart';
 import 'package:helpdesk_skripsi/style.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -12,6 +13,7 @@ class SearchWidget extends StatefulWidget {
     required this.text,
     required this.onChanged,
     required this.hintText,
+    List<BrowseIssue>? list,
   }) : super(key: key);
 
   @override
@@ -24,40 +26,38 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 42,
-      margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: primaryColor,
-      ),
-      child: TextField(
-        controller: controller,
-        style: GoogleFonts.inter(color: blackColor),
-        decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: blackColor,
-              width: 1.0,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: blackColor,
-              width: 1.0,
-            ),
-          ),
-          hintText: widget.hintText,
-          hintStyle: GoogleFonts.inter(
-            color: blackColor,
-            fontSize: 14,
-          ),
-          border: InputBorder.none,
+        height: 42,
+        margin: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: primaryColor,
         ),
-        onChanged: widget.onChanged,
-      ),
-    );
+        child: TextField(
+            controller: controller,
+            style: GoogleFonts.inter(color: blackColor),
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.search),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  color: blackColor,
+                  width: 1.0,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  color: blackColor,
+                  width: 1.0,
+                ),
+              ),
+              hintText: widget.hintText,
+              hintStyle: GoogleFonts.inter(
+                color: blackColor,
+                fontSize: 14,
+              ),
+              border: InputBorder.none,
+            ),
+            onSubmitted: widget.onChanged));
   }
 }

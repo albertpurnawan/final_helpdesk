@@ -49,34 +49,45 @@ class RouteClass {
 
   static List<GetPage> routes = [
     GetPage(name: login, page: () => const LoginPage()),
-    GetPage(name: dashboard, page: () => const DashboardPage()),
+    GetPage(
+        name: '${RouteClass.dashboard}/:token',
+        page: () => const DashboardPage()),
     GetPage(
       name: createTicket,
       page: () => const CreateTicket(),
-      // transition: Transition.fade,
-      // transitionDuration: const Duration(seconds: 1),
     ),
-    GetPage(name: ticketPool, page: () => const TicketPoolPage()),
-    GetPage(name: home, page: () => const HomePage()),
-    GetPage(name: main, page: () => const MainPage()),
-    GetPage(name: masterCategory, page: () => const MasterCategoryPage()),
-    GetPage(name: report, page: () => const ReportPage()),
-    GetPage(name: browse, page: () => const BrowsePage()),
-    GetPage(name: joblist, page: () => const JoblistPage()),
     GetPage(
-        name: '${RouteClass.browsedetail}/:tickteNum',
+        name: '${RouteClass.ticketPool}/:token',
+        page: () => const TicketPoolPage()),
+    GetPage(
+        name: '${RouteClass.home}/:password/:username/:token',
+        page: () => const HomePage()),
+    GetPage(
+        name: '${RouteClass.main}/:password/:username/:token',
+        page: () => const MainPage()),
+    GetPage(
+        name: '${RouteClass.masterCategory}/:token',
+        page: () => const MasterCategoryPage()),
+    GetPage(
+        name: '${RouteClass.report}/:token', page: () => const ReportPage()),
+    GetPage(
+        name: '${RouteClass.browse}/:token', page: () => const BrowsePage()),
+    GetPage(
+        name: '${RouteClass.joblist}/:token', page: () => const JoblistPage()),
+    GetPage(
+        name: '${RouteClass.browsedetail}/:token/:id',
         page: () => const BrowsesDetailPage()),
     GetPage(
-        name: '${RouteClass.showstatus}/:tickteNum',
+        name: '${RouteClass.showstatus}/:token/:docno/:ticket',
         page: () => const ShowStatus()),
-    GetPage(
-        name: '${RouteClass.historydetail}/:tickteNum',
-        page: () => const HistoryDetailPage()),
-    GetPage(
-        name: '${RouteClass.review}/:tickteNum',
-        page: () => const ReviewJoblist()),
-    GetPage(
-        name: '${RouteClass.ticketpooldetail}/:tickteNum',
-        page: () => const TicketPoolDetailPage()),
+    // GetPage(
+    //     name: '${RouteClass.historydetail}/:token/:docno',
+    //     page: () => const HistoryDetailPage()),
+    // GetPage(
+    //     name: '${RouteClass.review}/:token/:docno',
+    //     page: () => const ReviewJoblist()),
+    // GetPage(
+    //     name: '${RouteClass.ticketpooldetail}/:token/:docno',
+    //     page: () => const TicketPoolDetailPage()),
   ];
 }

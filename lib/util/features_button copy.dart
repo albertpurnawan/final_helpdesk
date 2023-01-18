@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
 import 'package:helpdesk_skripsi/style.dart';
 
@@ -10,7 +9,6 @@ class FeaturesButton extends StatelessWidget {
   final String featuresText;
   final int index;
   final String token;
-
   const FeaturesButton({
     super.key,
     required this.icon,
@@ -21,7 +19,6 @@ class FeaturesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(token);
     return Column(
       children: [
         //icon
@@ -29,24 +26,22 @@ class FeaturesButton extends StatelessWidget {
           onTap: () {
             switch (index) {
               case 0:
-                Get.toNamed('${RouteClass.getDashboardRoute()}/$token');
+                Get.toNamed(RouteClass.getDashboardRoute());
                 break;
               case 1:
-                Get.toNamed('${RouteClass.getTicketPoolRoute()}/$token');
+                Get.toNamed(RouteClass.getTicketPoolRoute());
                 break;
               case 2:
-                Get.toNamed('${RouteClass.getMasterCategoryRoute()}/$token');
+                Get.toNamed(RouteClass.getMasterCategoryRoute());
                 break;
               case 3:
-                Get.toNamed('${RouteClass.getJoblistRoute()}/$token');
+                Get.toNamed(RouteClass.getJoblistRoute());
                 break;
               case 4:
-                Get.toNamed('${RouteClass.getReportRoute()}/$token');
+                Get.toNamed(RouteClass.getReportRoute());
                 break;
               case 5:
-                Get.toNamed('${RouteClass.getBrowseRoute()}/$token');
-                // listBrowseData();
-
+                Get.toNamed('$RouteClass.getBrowseRoute()/$token');
                 break;
             }
           },

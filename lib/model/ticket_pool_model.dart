@@ -1,52 +1,179 @@
-class TicketPool {
-  int ticketNum;
+class TicketPoolModel {
+  String closeticketdate;
+  String userratedate;
+  String updatedate;
+  String createdate;
+  String scheduledate;
+  String email;
+  String createby;
+  String isquickresponsehelpdesk;
+  String subcategory2;
+  String title;
+  String subcategory1;
+  String problemidentification;
+  String docno;
+  String description;
+  String updateby;
+  String supportcategory;
+  String attachments;
+  String category;
+  String worklocationcode;
+  String correctiveaction;
+  String id;
+  String notes;
+  String assigned;
+  String userid;
+  String modulecode;
+  String systemcode;
   String status;
-  String issueDesc;
-  String requester;
-  String requesterEmail;
-  String requesterPhoneNum;
-  String createdBy;
-  DateTime createdDate;
-  List<String> comunicationBy;
-  List<String> supportCategory;
-  List<String> category;
+  String supporttype;
+  String username;
+  String type;
+  String communicationby;
+  String updatectr;
+  String repairtype;
+  String applicationcode;
+  String phonenumber;
+  String t_ticket_id;
+  String rate;
+  String assignedname;
+  String createbyname;
+  String requestforworklocation;
+  String d_comment;
 
-  TicketPool(
-      {required this.ticketNum,
-      required this.status,
-      required this.issueDesc,
-      required this.requester,
-      required this.requesterEmail,
-      required this.requesterPhoneNum,
-      required this.createdBy,
-      required this.createdDate,
-      required this.comunicationBy,
-      required this.supportCategory,
-      required this.category});
+  TicketPoolModel({
+    required this.closeticketdate,
+    required this.userratedate,
+    required this.updatedate,
+    required this.createdate,
+    required this.scheduledate,
+    required this.email,
+    required this.createby,
+    required this.isquickresponsehelpdesk,
+    required this.subcategory2,
+    required this.title,
+    required this.subcategory1,
+    required this.problemidentification,
+    required this.docno,
+    required this.description,
+    required this.updateby,
+    required this.supportcategory,
+    required this.attachments,
+    required this.category,
+    required this.worklocationcode,
+    required this.correctiveaction,
+    required this.id,
+    required this.notes,
+    required this.assigned,
+    required this.userid,
+    required this.modulecode,
+    required this.systemcode,
+    required this.status,
+    required this.supporttype,
+    required this.username,
+    required this.type,
+    required this.communicationby,
+    required this.updatectr,
+    required this.repairtype,
+    required this.applicationcode,
+    required this.phonenumber,
+    required this.t_ticket_id,
+    required this.rate,
+    required this.assignedname,
+    required this.createbyname,
+    required this.requestforworklocation,
+    required this.d_comment,
+  });
 
-  TicketPool copy({
-    int? ticketNum,
-    String? status,
-    String? issueDesc,
-    String? requester,
-    String? requesterEmail,
-    String? requesterPhoneNum,
-    String? createdBy,
-    DateTime? createdDate,
-    List<String>? comunicationBy,
-    List<String>? supportCategory,
-    List<String>? category,
-  }) =>
-      TicketPool(
-          ticketNum: ticketNum ?? this.ticketNum,
-          createdDate: createdDate ?? this.createdDate,
-          issueDesc: issueDesc ?? this.issueDesc,
-          requester: requester ?? this.requester,
-          requesterEmail: requesterEmail ?? this.requesterEmail,
-          requesterPhoneNum: requesterPhoneNum ?? this.requesterPhoneNum,
-          createdBy: createdBy ?? this.createdBy,
-          status: status ?? this.status,
-          comunicationBy: comunicationBy ?? this.comunicationBy,
-          supportCategory: supportCategory ?? this.supportCategory,
-          category: category ?? this.category);
+  Map<String, dynamic> toMap() {
+    return {
+      "closeticketdate": closeticketdate,
+      "userratedate": userratedate,
+      "updatedate": updatedate,
+      "createdate": createdate,
+      "scheduledate": scheduledate,
+      "email": email,
+      "createby": createby,
+      "isquickresponsehelpdesk": isquickresponsehelpdesk,
+      "subcategory2": subcategory2,
+      "title": title,
+      "subcategory1": subcategory1,
+      "problemidentification": problemidentification,
+      "docno": docno,
+      "description": description,
+      "updateby": updateby,
+      "supportcategory": supportcategory,
+      "attachments": attachments,
+      "category": category,
+      "worklocationcode": worklocationcode,
+      "correctiveaction": correctiveaction,
+      "id": id,
+      "notes": notes,
+      "assigned": assigned,
+      "userid": userid,
+      "modulecode": modulecode,
+      "systemcode": systemcode,
+      "status": status,
+      "supporttype": supporttype,
+      "username": username,
+      "type": type,
+      "communicationby": communicationby,
+      "updatectr": updatectr,
+      "repairtype": repairtype,
+      "applicationcode": applicationcode,
+      "phonenumber": phonenumber,
+      "t_ticket_id": t_ticket_id,
+      "rate": rate,
+      "assignedname": assignedname,
+      "createbyname": createbyname,
+      "requestforworklocation": requestforworklocation,
+      "d_comment": d_comment,
+    };
+  }
+
+  factory TicketPoolModel.fromMap(Map<String, dynamic> map) {
+    return TicketPoolModel(
+      closeticketdate: map['closeticketdate'].toString(),
+      userratedate: map['userratedate'].toString(),
+      updatedate: map['updatedate'].toString(),
+      createdate: map['createdate'],
+      scheduledate: map['scheduledate'].toString(),
+      email: map['email'].toString(),
+      createby: map['createby'].toString(),
+      isquickresponsehelpdesk: map['isquickresponsehelpdesk'].toString(),
+      subcategory2: map['subcategory2'].toString(),
+      title: map['title'].toString(),
+      subcategory1: map['subcategory1'].toString(),
+      problemidentification: map['problemidentification'].toString(),
+      docno: map['docno'].toString(),
+      description: map['description'].toString(),
+      updateby: map['updateby'].toString(),
+      supportcategory: map['supportcategory'].toString(),
+      attachments: map['attachments'].toString(),
+      category: map['category'].toString(),
+      worklocationcode: map['worklocationcode'].toString(),
+      correctiveaction: map['correctiveaction'].toString(),
+      id: map['id'].toString(),
+      notes: map['notes'].toString(),
+      assigned: map['assigned'].toString(),
+      userid: map['userid'].toString(),
+      modulecode: map['modulecode'].toString(),
+      systemcode: map['systemcode'].toString(),
+      status: map['status'].toString(),
+      supporttype: map['supporttype'].toString(),
+      username: map['username'].toString(),
+      type: map['type'].toString(),
+      communicationby: map['communicationby'].toString(),
+      updatectr: map['updatectr'].toString(),
+      repairtype: map['repairtype'].toString(),
+      applicationcode: map['applicationcode'].toString(),
+      phonenumber: map['phonenumber'].toString(),
+      t_ticket_id: map['t_ticket_id'].toString(),
+      rate: map['rate'].toString(),
+      assignedname: map['assignedname'].toString(),
+      createbyname: map['createbyname'].toString(),
+      requestforworklocation: map['requestforworklocation'].toString(),
+      d_comment: map['d_comment'].toString(),
+    );
+  }
 }

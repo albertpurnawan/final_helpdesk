@@ -1,54 +1,123 @@
-import 'package:helpdesk_skripsi/Model/browse_model.dart';
+import 'dart:async';
+import 'dart:convert';
 
-final allIssue = <BrowseIssue>[
-  BrowseIssue(
-      ticketNum: 2201000250006179,
-      createdDate: DateTime.now(),
-      issueDesc: 'Absensi Oka tanggal 14/11/2022 ada 44 orang belum naik.',
-      requestFor: 'MM04991 - Albert',
-      createdBy: 'MM04994 - Daniel',
-      status: 'Open',
-      supportCategory: 'Technical Problem'),
-  BrowseIssue(
-      ticketNum: 2201000250006178,
-      createdDate: DateTime.now(),
-      issueDesc:
-          'Mohon bantuan permintaan zoom meeting : Nama : Cornelia Natasha Febby NIK : 00092967 Department / Divisi : HR Corporate / Recruiter Tanggal : Rabu, 16 November 2022 Waktu : 15.00. s/d 16.30 WIB Tema / Topik : Interview User Financial Reporting PT Mayora Indah Tbk',
-      requestFor: 'MM04994 - Daniel',
-      createdBy: 'MM04996 - Chris Anggawana',
-      status: 'Close',
-      supportCategory: 'Network Problem'),
-  BrowseIssue(
-      ticketNum: 2201000250006177,
-      createdDate: DateTime.now(),
-      issueDesc:
-          'Mohon bantuannya untuk kebutuhan link zoom meeting dbi: Nama : Aluisius Dwiki NIK : 100717 Department / Divisi : Sisdur Hari & Tanggal : Kamis, 17 Nov 2022 Waktu : 13.30 - Selesai (Waktu mohon agar Tentative sampe Sore karena mempertimbangkan adanya perubahan Waktu) Tema & Topik : Meeting Review Pencapaian KPI Operational 2022 - Import & Accounting GL',
-      requestFor: 'MM04991 - Albert',
-      createdBy: 'MM04984 - Edward',
-      status: 'Review',
-      supportCategory: 'Application Problem'),
-  BrowseIssue(
-      ticketNum: 2201000250006176,
-      createdDate: DateTime.now(),
-      issueDesc: 'Absensi Oka tanggal 14/11/2022 ada 44 orang belum naik.',
-      requestFor: 'MM04982 - Dimas',
-      createdBy: 'MM04980 - James Kurniawan',
-      status: 'Open',
-      supportCategory: 'Technical Problem'),
-  BrowseIssue(
-      ticketNum: 2201000250006175,
-      createdDate: DateTime.now(),
-      issueDesc: 'Absensi Oka tanggal 14/11/2022 ada 44 orang belum naik.',
-      requestFor: 'MM04991 - Albert',
-      createdBy: 'MM04994 - Daniel',
-      status: 'Open',
-      supportCategory: 'Technical Problem'),
-  BrowseIssue(
-      ticketNum: 2201000250006174,
-      createdDate: DateTime.now(),
-      issueDesc: 'Absensi Oka tanggal 14/11/2022 ada 44 orang belum naik.',
-      requestFor: 'MM04983 - Octo',
-      createdBy: 'MM04994 - Daniel',
-      status: 'Open',
-      supportCategory: 'Technical Problem'),
-];
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:helpdesk_skripsi/routes/routes.dart';
+import 'package:helpdesk_skripsi/util/returnAPI.dart';
+import 'package:helpdesk_skripsi/util/utils.dart';
+import 'package:http/http.dart' as http;
+
+import '../model/browse_model.dart';
+
+class getBrowseData {
+  static Future<List<BrowseIssue>> browseData(
+      {required BuildContext context,
+      required String token,
+      required String search}) async {
+    String data = "";
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$baseURL/search/register'),
+        body: jsonEncode({
+          "topic": "helpdesk.browse.get",
+          "message": {"_viewall": true},
+          "headers": {}
+        }),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'x-access-token': token
+        },
+      );
+      httpErrorHandle(
+          response: res,
+          context: context,
+          onSuccess: () async {
+            data = res.body;
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+
+    return (json.decode(data) as List)
+        .map((i) => BrowseIssue.fromMap(i))
+        .where((issue) {
+      final docno = issue.docno.toString().toLowerCase();
+      final createby = issue.createby.toString().toLowerCase();
+      final createdate = issue.createdate.toString().toLowerCase();
+      final description = issue.description.toString().toLowerCase();
+      final status = issue.status.toString().toLowerCase();
+      final supportcategory = issue.supportcategory.toString().toLowerCase();
+      final searchLower = search.toLowerCase();
+
+      return docno.contains(searchLower) ||
+          createby.contains(searchLower) ||
+          createdate.contains(searchLower) ||
+          description.contains(searchLower) ||
+          status.contains(searchLower) ||
+          supportcategory.contains(searchLower);
+    }).toList();
+  }
+
+  static Future<List<BrowseIssueDetail>> browseDetailData(
+      {required BuildContext context,
+      required String token,
+      required String id}) async {
+    String data = "";
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$baseURL/search/register'),
+        body: jsonEncode({
+          "topic": "helpdesk.issue.search",
+          "message": {"id": id},
+          "headers": {}
+        }),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'x-access-token': token
+        },
+      );
+      httpErrorHandle(
+          response: res,
+          context: context,
+          onSuccess: () async {
+            data = res.body.toString();
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+
+    return (json.decode(data) as List)
+        .map((i) => BrowseIssueDetail.fromMap(i))
+        .toList();
+  }
+
+  static Future<String> browseData2(
+      {required BuildContext context, required String token}) async {
+    String data = "";
+    try {
+      http.Response res = await http.post(
+        Uri.parse('$baseURL/search/register'),
+        body: jsonEncode({
+          "topic": "helpdesk.browse.get",
+          "message": {"_viewall": true},
+          "headers": {}
+        }),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'x-access-token': token
+        },
+      );
+      httpErrorHandle(
+          response: res,
+          context: context,
+          onSuccess: () async {
+            data = res.body;
+          });
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+
+    return data;
+  }
+}
