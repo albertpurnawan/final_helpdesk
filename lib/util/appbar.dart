@@ -5,13 +5,18 @@ import 'package:helpdesk_skripsi/style.dart';
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool showBackBtn;
-
-  const MyAppBar({super.key, required this.title, required this.showBackBtn});
+  final Widget? leading;
+  const MyAppBar(
+      {super.key,
+      required this.title,
+      required this.showBackBtn,
+      this.leading});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       // centerTitle: true,
+      leading: leading,
       backgroundColor: primaryColor,
       automaticallyImplyLeading: showBackBtn,
       title: Text(

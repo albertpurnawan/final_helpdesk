@@ -1,74 +1,52 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/widgets.dart';
+import 'package:helpdesk_skripsi/controller/controller.dart';
 
 class User {
-  final String UserLogin;
-  final String AccessibleApplication;
-  final String AccessiblePortalMenu;
-
-  User(
-      {required this.UserLogin,
-      required this.AccessibleApplication,
-      required this.AccessiblePortalMenu});
-
-  Map<String, dynamic> toMap() {
-    return {
-      'UserLogin': UserLogin,
-      'AccessibleApplication': AccessibleApplication,
-      'AccessiblePortalMenu': AccessiblePortalMenu
-    };
-  }
-
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
-      UserLogin: map['UserLogin'] ?? '',
-      AccessibleApplication: map['AccessibleApplication'] ?? '',
-      AccessiblePortalMenu: map['AccessiblePortalMenu'] ?? '',
-    );
-  }
-}
-
-class UserProfile {
   final String username;
   final String password;
-  final String name;
-  final String empId;
+  final String ua;
   final String email;
-  final String groupCode;
-  final bool isDeleted;
-  final bool usingLDAP;
+  final String image;
+  final String name;
+  final String groupcode;
+  final String groupname;
+  final String empid;
 
-  UserProfile(
+  User(
       {required this.username,
       required this.password,
-      required this.name,
-      required this.empId,
+      required this.ua,
       required this.email,
-      required this.groupCode,
-      required this.isDeleted,
-      required this.usingLDAP});
+      required this.image,
+      required this.name,
+      required this.groupcode,
+      required this.empid,
+      required this.groupname});
 
   Map<String, dynamic> toMap() {
     return {
       'username': username,
       'password': password,
-      'name': name,
-      'empId': empId,
+      'useraccess': ua,
       'email': email,
-      'groupCode': groupCode,
-      'isDeleted': isDeleted,
-      'usingLDAP': usingLDAP
+      'image': image,
+      'name': name,
+      'groupcode': groupcode,
+      'empid': empid,
+      'groupname': groupname
     };
   }
 
-  factory UserProfile.fromMap(Map<String, dynamic> map) {
-    return UserProfile(
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
         username: map['username'] ?? '',
         password: map['password'] ?? '',
-        name: map['name'] ?? '',
-        empId: map['empId'] ?? '',
         email: map['email'] ?? '',
-        groupCode: map['groupCode'] ?? '',
-        isDeleted: map['isDeleted'],
-        usingLDAP: map['usingLDAP']);
+        ua: map['useraccess'] ?? '',
+        image: map['image'] ?? '',
+        name: map['name'] ?? '',
+        groupcode: map['groupcode'],
+        empid: map['empid'],
+        groupname: map['groupname']);
   }
 }

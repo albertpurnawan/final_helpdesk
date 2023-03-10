@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:helpdesk_skripsi/model/browse_model.dart';
+import 'package:helpdesk_skripsi/model/login_model.dart';
+import 'package:helpdesk_skripsi/model/showstatus_model.dart';
+import 'package:helpdesk_skripsi/model/ticket_pool_model.dart';
 import 'package:helpdesk_skripsi/pages/detailpages/browse_detail_page.dart';
 import 'package:helpdesk_skripsi/pages/browse_page.dart';
 import 'package:helpdesk_skripsi/pages/detailpages/history_detail_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/create_ticket_page.dart';
 import 'package:helpdesk_skripsi/pages/dashboard_page.dart';
+import 'package:helpdesk_skripsi/pages/navpages/error_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/home_page.dart';
 import 'package:helpdesk_skripsi/pages/joblist_page.dart';
 import 'package:helpdesk_skripsi/pages/login_page.dart';
@@ -31,6 +36,7 @@ class RouteClass {
   static String showstatus = "/showstatus";
   static String review = "/review";
   static String ticketpooldetail = "/ticketpooldetail";
+  static String error = "/error";
 
   static String getLoginRoute() => login;
   static String getDashboardRoute() => dashboard;
@@ -46,48 +52,72 @@ class RouteClass {
   static String getHistoryDetailRoute() => historydetail;
   static String getShowStatus() => showstatus;
   static String getDetailRouteTicket() => ticketpooldetail;
+  static String getErrorRoute() => error;
 
   static List<GetPage> routes = [
     GetPage(name: login, page: () => const LoginPage()),
     GetPage(
-        name: '${RouteClass.dashboard}/:token',
-        page: () => const DashboardPage()),
+        name: RouteClass.dashboard,
+        page: () => const DashboardPage(),
+        arguments: User),
     GetPage(
-      name: createTicket,
-      page: () => const CreateTicket(),
-    ),
+        name: createTicket, page: () => const CreateTicket(), arguments: User),
     GetPage(
-        name: '${RouteClass.ticketPool}/:token',
-        page: () => const TicketPoolPage()),
+        name: RouteClass.ticketPool,
+        page: () => const TicketPoolPage(),
+        arguments: User),
     GetPage(
-        name: '${RouteClass.home}/:password/:username/:token',
-        page: () => const HomePage()),
+        name: RouteClass.home, page: () => const HomePage(), arguments: User),
     GetPage(
-        name: '${RouteClass.main}/:password/:username/:token',
-        page: () => const MainPage()),
+        name: RouteClass.main, page: () => const MainPage(), arguments: User),
     GetPage(
-        name: '${RouteClass.masterCategory}/:token',
-        page: () => const MasterCategoryPage()),
+        name: RouteClass.masterCategory,
+        page: () => const MasterCategoryPage(),
+        arguments: User),
+    GetPage(name: RouteClass.report, page: () => const ReportPage()),
     GetPage(
-        name: '${RouteClass.report}/:token', page: () => const ReportPage()),
+        name: RouteClass.browse,
+        page: () => const BrowsePage(),
+        arguments: User),
     GetPage(
-        name: '${RouteClass.browse}/:token', page: () => const BrowsePage()),
+        name: RouteClass.joblist,
+        page: () => const JoblistPage(),
+        arguments: User),
     GetPage(
-        name: '${RouteClass.joblist}/:token', page: () => const JoblistPage()),
+        name: '${RouteClass.browsedetail}/:id/:docno',
+        page: () => const BrowsesDetailPage(),
+        arguments: User),
     GetPage(
-        name: '${RouteClass.browsedetail}/:token/:id',
-        page: () => const BrowsesDetailPage()),
+        name: RouteClass.showstatus,
+        page: () => const ShowStatus(),
+        arguments: ScreenArguments),
     GetPage(
-        name: '${RouteClass.showstatus}/:token/:docno/:ticket',
-        page: () => const ShowStatus()),
-    // GetPage(
-    //     name: '${RouteClass.historydetail}/:token/:docno',
-    //     page: () => const HistoryDetailPage()),
-    // GetPage(
-    //     name: '${RouteClass.review}/:token/:docno',
-    //     page: () => const ReviewJoblist()),
-    // GetPage(
-    //     name: '${RouteClass.ticketpooldetail}/:token/:docno',
-    //     page: () => const TicketPoolDetailPage()),
+        name: RouteClass.error, page: () => const ErrorPage(), arguments: User),
+    GetPage(
+        name: RouteClass.historydetail,
+        page: () => const HistoryDetailPage(),
+        arguments: ScreenArguments2),
+    GetPage(
+        name: RouteClass.review,
+        page: () => const ReviewJoblist(),
+        arguments: ScreenArguments2),
+    GetPage(
+        name: '${RouteClass.ticketpooldetail}/:id/:docno',
+        page: () => const TicketPoolDetailPage(),
+        arguments: User),
   ];
+}
+
+class ScreenArguments {
+  final User user;
+  final List<ShowStatusModel> workflow;
+
+  ScreenArguments(this.user, this.workflow);
+}
+
+class ScreenArguments2 {
+  final User user;
+  final BrowseIssueDetail browse;
+
+  ScreenArguments2(this.user, this.browse);
 }

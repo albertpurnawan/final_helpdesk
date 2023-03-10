@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:helpdesk_skripsi/model/login_model.dart';
 import 'package:helpdesk_skripsi/pages/navpages/create_ticket_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/home_page.dart';
 import 'package:helpdesk_skripsi/pages/navpages/profile_page.dart';
@@ -13,7 +15,16 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
-
+  User user = User(
+      username: "",
+      password: "",
+      ua: "",
+      email: "",
+      image: "",
+      name: "",
+      groupcode: "",
+      empid: "",
+      groupname: "");
   List pages = [
     const HomePage(),
     const CreateTicket(),
@@ -28,6 +39,10 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = ModalRoute.of(context)!.settings.arguments as User;
+    setState(() {
+      this.user = user;
+    });
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(

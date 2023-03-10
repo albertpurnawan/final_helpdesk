@@ -2,11 +2,13 @@ class ReportModel {
   String TicketNumber;
   String Status;
   String Username;
+  String worklocation;
   String Name;
   String HelpdeskUsername;
   String HelpdeskName;
   String PICUsername;
   String PICName;
+  String PICworklocation;
   String RequestDate;
   String HelpdeskResponseDate;
   String GetJobDate;
@@ -66,7 +68,9 @@ class ReportModel {
       required this.Minute,
       required this.Hour,
       required this.Day,
-      required this.RejectedNotes});
+      required this.RejectedNotes,
+      required this.worklocation,
+      required this.PICworklocation});
 
   Map<String, dynamic> toMap() {
     return {
@@ -102,45 +106,49 @@ class ReportModel {
       "Minute": Minute,
       "Hour": Hour,
       "Day": Day,
-      "RejectedNotes": RejectedNotes
+      "RejectedNotes": RejectedNotes,
+      "worklocation": worklocation,
+      "PICworklocation": PICworklocation
     };
   }
 
   factory ReportModel.fromMap(Map<String, dynamic> map) {
     return ReportModel(
-        TicketNumber: map['Ticket Number'] ?? '',
-        Status: map['Status'] ?? '',
-        Username: map['Username'] ?? '',
-        Name: map['Name'] ?? '',
-        HelpdeskUsername: map['Helpdesk Username'] ?? '',
-        HelpdeskName: map['Helpdesk Name'] ?? '',
-        PICUsername: map['PIC Username'] ?? '',
-        PICName: map['PIC Name'] ?? '',
-        RequestDate: map['Request Date'] ?? '',
-        HelpdeskResponseDate: map['Helpdesk Response Date'] ?? '',
-        GetJobDate: map['Get Job Date'] ?? '',
-        PICCloseDate: map['PIC Close Date'] ?? '',
-        FinishDate: map['Finish Date'] ?? '',
-        DurationbyHelpdesk: map['Duration by Helpdesk'] ?? '',
-        DurationbyPIC: map['Duration by PIC'] ?? '',
-        Small: map['Small'] ?? '',
-        CommunicationBy: map['Communication By'] ?? '',
-        SupportCategory: map['Support Category'] ?? '',
-        Category: map['Category'] ?? '',
-        SubCategory1: map['Sub Category 1'] ?? '',
-        SubCategory2: map['Sub Category 2'] ?? '',
-        RepairType: map['Repair Type'] ?? '',
-        SupportType: map['Support Type'] ?? '',
-        System: map['System'] ?? '',
-        Application: map['Application'] ?? '',
-        Description: map['Description'] ?? '',
-        ProblemIdentification: map['Problem Identification'] ?? '',
-        CorrectiveAction: map['Corrective Action'] ?? '',
-        Second: map['Second'] ?? '',
-        Minute: map['Minute'] ?? '',
-        Hour: map['Hour'] ?? '',
-        Day: map['Day'] ?? '',
-        RejectedNotes: map['Rejected Notes'] ?? '');
+        TicketNumber: map['ticketnumber'] ?? '',
+        Status: map['status'] ?? '',
+        Username: map['username'] ?? '',
+        Name: map['name'] ?? '',
+        HelpdeskUsername: map['helpdeskusername'] ?? '',
+        HelpdeskName: map['helpdeskname'] ?? '',
+        PICUsername: map['picusername'] ?? '',
+        PICName: map['picname'] ?? '',
+        RequestDate: map['requestdate'] ?? '',
+        HelpdeskResponseDate: map['helpdeskresponsedate'] ?? '',
+        GetJobDate: map['getjobdate'] ?? '',
+        PICCloseDate: map['picclosedate'] ?? '',
+        FinishDate: map['finishdate'] ?? '',
+        DurationbyHelpdesk: map['durationbyhelpdesk'] ?? '',
+        DurationbyPIC: map['durationbypic'] ?? '',
+        Small: map['small'] ?? '',
+        CommunicationBy: map['communicationby'] ?? '',
+        SupportCategory: map['supportcategory'] ?? '',
+        Category: map['category'] ?? '',
+        SubCategory1: map['subcategory1'] ?? '',
+        SubCategory2: map['subcategory2'] ?? '',
+        RepairType: map['repairtype'] ?? '',
+        SupportType: map['supporttype'] ?? '',
+        System: map['system'] ?? '',
+        Application: map['application'] ?? '',
+        Description: map['description'] ?? '',
+        ProblemIdentification: map['problemidentification'] ?? '',
+        CorrectiveAction: map['correctiveaction'] ?? '',
+        Second: map['second'] ?? '',
+        Minute: map['minute'] ?? '',
+        Hour: map['hour'] ?? '',
+        Day: map['day'] ?? '',
+        RejectedNotes: map['rejectednotes'] ?? '',
+        worklocation: map['worklocation'] ?? '',
+        PICworklocation: map['picworklocation'] ?? '');
   }
 }
 

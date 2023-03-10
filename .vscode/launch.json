@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Flutter",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "flutterMode": "release"
+        },
+        {
             "name": "helpdesk_skripsi",
             "request": "launch",
             "type": "dart"
@@ -20,6 +27,40 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "device1",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "device2",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5556"
+        },
+        {
+            "name": "device3",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5558"
+        },
+        {
+            "name": "device4",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5560"
+        },
+    ],"compounds": [
+        {
+            "name": "All Devices",
+            "configurations": [
+                "device1",
+                "device2",
+                "device3",
+                "device4"
+            ],
         }
     ]
 }

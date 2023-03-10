@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
+import 'package:helpdesk_skripsi/model/login_model.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
 import 'package:helpdesk_skripsi/style.dart';
 
@@ -9,45 +9,91 @@ class FeaturesButton extends StatelessWidget {
   final IconData icon;
   final String featuresText;
   final int index;
-  final String token;
+  final User user;
 
   const FeaturesButton({
     super.key,
     required this.icon,
     required this.featuresText,
     required this.index,
-    required this.token,
+    required this.user,
   });
 
   @override
   Widget build(BuildContext context) {
-    print(token);
     return Column(
       children: [
         //icon
         GestureDetector(
           onTap: () {
-            switch (index) {
-              case 0:
-                Get.toNamed('${RouteClass.getDashboardRoute()}/$token');
-                break;
-              case 1:
-                Get.toNamed('${RouteClass.getTicketPoolRoute()}/$token');
-                break;
-              case 2:
-                Get.toNamed('${RouteClass.getMasterCategoryRoute()}/$token');
-                break;
-              case 3:
-                Get.toNamed('${RouteClass.getJoblistRoute()}/$token');
-                break;
-              case 4:
-                Get.toNamed('${RouteClass.getReportRoute()}/$token');
-                break;
-              case 5:
-                Get.toNamed('${RouteClass.getBrowseRoute()}/$token');
-                // listBrowseData();
+            if (user.ua == 'helpdesk') {
+              switch (index) {
+                case 0:
+                  Get.toNamed(RouteClass.getDashboardRoute(), arguments: user);
+                  break;
+                case 1:
+                  Get.toNamed(RouteClass.getTicketPoolRoute(), arguments: user);
+                  break;
+                case 2:
+                  Get.toNamed(RouteClass.getMasterCategoryRoute(),
+                      arguments: user);
+                  break;
+                case 3:
+                  Get.toNamed(RouteClass.getJoblistRoute(), arguments: user);
+                  break;
+                case 4:
+                  Get.toNamed(RouteClass.getReportRoute(), arguments: user);
+                  break;
+                case 5:
+                  Get.toNamed(RouteClass.getBrowseRoute(), arguments: user);
+                  // listBrowseData();
 
-                break;
+                  break;
+              }
+            } else if (user.ua == 'picsupport' || user.ua == 'itsupport') {
+              switch (index) {
+                case 0:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 1:
+                  Get.toNamed(RouteClass.getTicketPoolRoute(), arguments: user);
+                  break;
+                case 2:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 3:
+                  Get.toNamed(RouteClass.getJoblistRoute(), arguments: user);
+                  break;
+                case 4:
+                  Get.toNamed(RouteClass.getReportRoute(), arguments: user);
+                  break;
+                case 5:
+                  Get.toNamed(RouteClass.getBrowseRoute(), arguments: user);
+                  // listBrowseData();
+
+                  break;
+              }
+            } else {
+              switch (index) {
+                case 0:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 1:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 2:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 3:
+                  Get.toNamed(RouteClass.getJoblistRoute(), arguments: user);
+                  break;
+                case 4:
+                  Get.toNamed(RouteClass.getErrorRoute(), arguments: user);
+                  break;
+                case 5:
+                  Get.toNamed(RouteClass.getBrowseRoute(), arguments: user);
+                  break;
+              }
             }
           },
           child: Column(

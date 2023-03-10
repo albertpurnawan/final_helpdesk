@@ -33,6 +33,10 @@ class ShowStatusModel {
   String lastdate;
   String lastuser;
   String lastapprove;
+  String currentlines;
+  String isreject;
+  String isdone;
+  String isreturn;
   List<ShowStatusModel> displayPIC;
 
   ShowStatusModel(
@@ -70,7 +74,11 @@ class ShowStatusModel {
       required this.lastdate,
       required this.lastuser,
       required this.lastapprove,
-      required this.displayPIC});
+      required this.displayPIC,
+      required this.currentlines,
+      required this.isdone,
+      required this.isreject,
+      required this.isreturn});
 
   Map<String, dynamic> toMap() {
     return {
@@ -107,7 +115,11 @@ class ShowStatusModel {
       "lastdate": lastdate,
       "lastuser": lastuser,
       "lastapprove": lastapprove,
-      "displayPIC": displayPIC
+      "displayPIC": displayPIC,
+      "currentlines": currentlines,
+      "isdone": isdone,
+      "isreject": isreject,
+      "isreturn": isreturn
     };
   }
 
@@ -148,6 +160,10 @@ class ShowStatusModel {
       empid: map['empid'] ?? '',
       name: map['name'] ?? '',
       displayPIC: map['displayPIC'] ?? [],
+      currentlines: map['currentlines'] ?? '',
+      isdone: map['isdone'] ?? '',
+      isreject: map['isreject'] ?? '',
+      isreturn: map['isreturn'] ?? '',
     );
   }
 }

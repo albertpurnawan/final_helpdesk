@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:helpdesk_skripsi/data/browse_issue_data.dart';
+import 'package:helpdesk_skripsi/controller/controller.dart';
+import 'package:helpdesk_skripsi/model/login_model.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
 import 'package:helpdesk_skripsi/util/searchBar.dart';
+import 'package:helpdesk_skripsi/util/utils.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
@@ -25,9 +27,18 @@ class BrowsePage extends StatefulWidget {
 class _BrowsePageState extends State<BrowsePage> {
   bool loading = true;
   String search = '';
-  String token = Get.parameters['token'].toString();
   List<BrowseIssue> data = [];
   Timer? debouncer;
+  User user = User(
+      username: '',
+      password: '',
+      ua: '',
+      email: '',
+      image: '',
+      name: '',
+      groupcode: '',
+      empid: "",
+      groupname: "");
   @override
   void initState() {
     super.initState();
@@ -59,8 +70,13 @@ class _BrowsePageState extends State<BrowsePage> {
   }
 
   Future init() async => debounce(() async {
-        final data = await getBrowseData.browseData(
-            context: context, token: token, search: search);
+        final data = await controller.Browse(
+            context: context,
+            groupcode: user.groupcode,
+            name: user.name,
+            ua: user.ua,
+            username: user.username);
+        print(data.length);
         if (!mounted) return;
         setState(() {
           this.data = data;
@@ -70,26 +86,78 @@ class _BrowsePageState extends State<BrowsePage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = ModalRoute.of(context)!.settings.arguments as User;
+    setState(() {
+      this.user = user;
+    });
     return Scaffold(
       appBar: const MyAppBar(title: 'Browse Ticket', showBackBtn: true),
       backgroundColor: primaryColor,
-      body: Column(
-        children: <Widget>[
-          buildSearch(),
-          if (loading) loadingImage(),
-          if (!loading)
-            Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        final id = data[index].id;
-                        return buildCard(data[index], id);
-                      },
-                    ))),
-        ],
-      ),
+      body: loading
+          ? loadingImage()
+          : Column(
+              children: <Widget>[
+                data.length > 0
+                    ? buildSearch()
+                    : SizedBox(
+                        height: 10,
+                      ),
+                data.length > 0
+                    ? Expanded(
+                        child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: ListView.builder(
+                              itemCount: data.length,
+                              itemBuilder: (context, index) {
+                                final id = data[index].id;
+                                return buildCard(data[index], id);
+                              },
+                            )))
+                    : Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.35,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: SizedBox(
+                                  height: 50,
+                                  child: Center(
+                                    child: Text("Data Not Found",
+                                        style: GoogleFonts.inter(
+                                            fontSize: 20,
+                                            color: secondaryColor,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 50,
+                                child: Center(
+                                  child:
+                                      Lottie.asset("assets/lottie/error.json"),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("No Data Found in Browse Ticket",
+                                  style: GoogleFonts.inter(
+                                      fontSize: 14,
+                                      color: blackColor,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ],
+                      ),
+              ],
+            ),
     );
   }
 
@@ -264,9 +332,10 @@ class _BrowsePageState extends State<BrowsePage> {
         ),
       ),
       onTap: () {
-        print(token);
-        print(id);
-        Get.toNamed('${RouteClass.browsedetail}/$token/$id');
+        print(issue.id);
+        print(issue.docno);
+        Get.toNamed('${RouteClass.browsedetail}/${issue.id}/${issue.docno}',
+            arguments: user);
       },
     );
   }
@@ -281,14 +350,27 @@ class _BrowsePageState extends State<BrowsePage> {
         setState(() {
           loading = true;
         });
-
-        print(search);
-        final data = await getBrowseData.browseData(
-            context: context, token: token, search: search);
         if (!mounted) return;
         setState(() {
           this.search = search;
-          this.data = data;
+          this.data = data.where((issue) {
+            final docno = issue.docno.toString().toLowerCase();
+            final createby = issue.createby.toString().toLowerCase();
+            final createdate = issue.createdate.toString().toLowerCase();
+            final description = issue.description.toString().toLowerCase();
+            final status = issue.status.toString().toLowerCase();
+            final supportcategory =
+                issue.supportcategory.toString().toLowerCase();
+            final searchLower = search.toLowerCase();
+
+            return docno.contains(searchLower) ||
+                createby.contains(searchLower) ||
+                createdate.contains(searchLower) ||
+                description.contains(searchLower) ||
+                status.contains(searchLower) ||
+                supportcategory.contains(searchLower);
+          }).toList();
+
           loading = false;
         });
       });

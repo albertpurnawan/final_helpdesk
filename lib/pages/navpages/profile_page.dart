@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:helpdesk_skripsi/model/login_model.dart';
 import 'package:helpdesk_skripsi/routes/routes.dart';
 import 'package:helpdesk_skripsi/style.dart';
 import 'package:helpdesk_skripsi/util/appbar.dart';
@@ -47,6 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = ModalRoute.of(context)!.settings.arguments as User;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: const MyAppBar(title: "Profile", showBackBtn: false),
@@ -91,17 +94,40 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           )
                         : SizedBox(
-                            width: 120,
-                            height: 120,
+                            width: 100,
+                            height: 100,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
-                              child: Image.asset("assets/images/iuProfile.jpg"),
+                              // child: Image(
+                              //   image: NetworkImageWithRetry(
+                              //       "${snapshot.data![1]}"),
+                              //   fit: BoxFit.cover,
+                              //   height: double.infinity,
+                              //   width: double.infinity,
+                              //   alignment: Alignment.center,
+                              // ),
+                              child: CachedNetworkImage(
+                                imageUrl: user.image,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
                             ),
                           ),
                     Column(
                       children: [
                         Text(
-                          "DANIEL",
+                          user.name,
                           style: GoogleFonts.inter(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -109,90 +135,90 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         Text(
-                          "MM04994",
+                          user.username,
                           style: GoogleFonts.inter(
                             fontSize: 16,
                             color: primaryColor,
                           ),
                         ),
                         const SizedBox(height: 10),
-                        ElevatedButton(
-                          onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: ((context) {
-                                return SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.2,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ElevatedButton.icon(
-                                        onPressed: () {
-                                          pickFromCamera();
-                                          Get.back();
-                                        },
-                                        icon: Icon(
-                                          Icons.camera,
-                                          color: greyColor,
-                                        ),
-                                        label: Text(
-                                          "Choose From Camera",
-                                          style: GoogleFonts.inter(
-                                            fontSize: 14,
-                                            color: greyColor,
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: primaryColor,
-                                          side: BorderSide(
-                                            color: greyColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                      ),
-                                      ElevatedButton.icon(
-                                        onPressed: () {
-                                          pickFromGallery();
-                                          Get.back();
-                                        },
-                                        icon: Icon(
-                                          Icons.photo,
-                                          color: secondaryColor,
-                                        ),
-                                        label: Text(
-                                          "Choose From Gallery",
-                                          style: GoogleFonts.inter(
-                                            fontSize: 14,
-                                            color: secondaryColor,
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: primaryColor,
-                                          side: BorderSide(
-                                            color: secondaryColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              }),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                          ),
-                          child: Text(
-                            "Change Photo",
-                            style: GoogleFonts.inter(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: secondaryColor,
-                            ),
-                          ),
-                        ),
+                        // ElevatedButton(
+                        //   onPressed: () {
+                        //     showModalBottomSheet(
+                        //       context: context,
+                        //       builder: ((context) {
+                        //         return SizedBox(
+                        //           height:
+                        //               MediaQuery.of(context).size.height * 0.2,
+                        //           child: Column(
+                        //             mainAxisAlignment: MainAxisAlignment.center,
+                        //             children: [
+                        //               ElevatedButton.icon(
+                        //                 onPressed: () {
+                        //                   pickFromCamera();
+                        //                   Get.back();
+                        //                 },
+                        //                 icon: Icon(
+                        //                   Icons.camera,
+                        //                   color: greyColor,
+                        //                 ),
+                        //                 label: Text(
+                        //                   "Choose From Camera",
+                        //                   style: GoogleFonts.inter(
+                        //                     fontSize: 14,
+                        //                     color: greyColor,
+                        //                   ),
+                        //                 ),
+                        //                 style: ElevatedButton.styleFrom(
+                        //                   backgroundColor: primaryColor,
+                        //                   side: BorderSide(
+                        //                     color: greyColor,
+                        //                     width: 1,
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //               ElevatedButton.icon(
+                        //                 onPressed: () {
+                        //                   pickFromGallery();
+                        //                   Get.back();
+                        //                 },
+                        //                 icon: Icon(
+                        //                   Icons.photo,
+                        //                   color: secondaryColor,
+                        //                 ),
+                        //                 label: Text(
+                        //                   "Choose From Gallery",
+                        //                   style: GoogleFonts.inter(
+                        //                     fontSize: 14,
+                        //                     color: secondaryColor,
+                        //                   ),
+                        //                 ),
+                        //                 style: ElevatedButton.styleFrom(
+                        //                   backgroundColor: primaryColor,
+                        //                   side: BorderSide(
+                        //                     color: secondaryColor,
+                        //                     width: 1,
+                        //                   ),
+                        //                 ),
+                        //               )
+                        //             ],
+                        //           ),
+                        //         );
+                        //       }),
+                        //     );
+                        //   },
+                        //   style: ElevatedButton.styleFrom(
+                        //     backgroundColor: primaryColor,
+                        //   ),
+                        //   child: Text(
+                        //     "Change Photo",
+                        //     style: GoogleFonts.inter(
+                        //       fontSize: 14,
+                        //       fontWeight: FontWeight.bold,
+                        //       color: secondaryColor,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     )
                   ],
@@ -229,19 +255,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     const Divider(thickness: 2),
                     const SizedBox(height: 10),
                     ProfileTiles(
-                      text: "70004994",
+                      text: user.empid,
                       icon: Icons.person,
                       color: greyColor,
                     ),
                     const SizedBox(height: 10),
                     ProfileTiles(
-                      text: "daniel@mayora.co.id",
+                      text: user.email,
                       icon: Icons.mail,
                       color: greyColor,
                     ),
                     const SizedBox(height: 10),
                     ProfileTiles(
-                      text: "IT INTERN",
+                      text: user.groupname,
                       icon: Icons.badge,
                       color: greyColor,
                     ),
